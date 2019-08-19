@@ -7,16 +7,16 @@ const ipAdd = ip.address();
 const keepAliveAgent = new http.Agent({
     maxSockets: 100
 });
-const Ports = Array.from(Array(10000).keys());
+const Ports = Array.from(Array(500).keys());
 
 var data = {};
-var key = 'data';
+var key = 'response';
 data[key] = [];
 
 let block = new Netmask(ipAdd + '/24');
 
 export function scanresult(req, res) {
-    console.log('STATUS: ' + req.body.status)
+    console.log('STATUS: ' + req.body.status);
     block.forEach((ip, long, index) => {
         ping.sys.probe(ip, function(isAlive) {
             if (isAlive) {
@@ -29,9 +29,10 @@ export function scanresult(req, res) {
                         }, () => {
                             var result = ip + ':' + Ports[p];
                             data[key].push(result);
+                            s.destroy()
                         });
 
-                        s.setTimeout(Ports.length * 2, function() {
+                        s.setTimeout(Ports.length, function() {
                             s.destroy()
                         });
 
@@ -43,10 +44,12 @@ export function scanresult(req, res) {
                 }
             }
         })
-    })
-    // setTimeout(function() {
-    //     console.log(data)
-    // }, Ports.length * 2)
+    });
+
+    setTimeout(function() {
+        console.log(data);
+    }, 5000);
+    
     res.json({
         success: true,
         status: 'done'

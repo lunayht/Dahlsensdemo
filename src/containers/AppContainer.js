@@ -27,7 +27,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<h1>Your IP address is: {this.state.localip}</h1>
+				<h1>Your local IP address is: {this.state.localip}</h1>
 				<button onClick={this.handleClick}>Scan</button>
 			</div>
 		)
