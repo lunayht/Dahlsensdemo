@@ -1,5 +1,0 @@
-{"expose":true,"statusCode":400,"status":400,"body":"lol","type":"entity.parse.failed","level":"error","timestamp":"2019-08-19T02:45:38.097Z"}
-{"expose":true,"statusCode":400,"status":400,"body":"lol","type":"entity.parse.failed","level":"error","timestamp":"2019-08-19T02:51:06.958Z"}
-{"expose":true,"statusCode":400,"status":400,"body":"startscan","type":"entity.parse.failed","level":"error","timestamp":"2019-08-19T03:57:13.224Z"}
-{"level":"error","timestamp":"2019-08-19T06:57:46.671Z"}
-{"level":"error","timestamp":"2019-08-19T07:46:06.038Z"}
