@@ -1,0 +1,3 @@
+{"expose":true,"statusCode":400,"status":400,"body":"lol","type":"entity.parse.failed","level":"error","timestamp":"2019-08-16T10:58:50.090Z"}
+{"expose":true,"statusCode":400,"status":400,"body":"lol","type":"entity.parse.failed","level":"error","timestamp":"2019-08-16T10:59:27.622Z"}
+{"expose":true,"statusCode":400,"status":400,"body":"lol","type":"entity.parse.failed","level":"error","timestamp":"2019-08-16T11:00:46.780Z"}
