@@ -4,6 +4,7 @@ import IpScanForm from '../../components/IpScanForm';
 import * as crudAction from '../../actions/crudAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { CircularProgress } from '@material-ui/core';
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -32,15 +33,23 @@ class MainPage extends React.Component {
             loading: true,
         });
         this.props.actions.clickscan(formProps).then(data => {
-            console.log(data)
+            this.setState({
+                loading: false,
+                success: true,
+                data: JSON.stringify(data.data.response, null, 4)
+            })
         });
     }
 
     render() {
+        const { loading } = this.state;
+
         return(
             <div className='App'>
                 <h1>Your local IP address is {this.state.localip}</h1>
                 <IpScanForm onSubmit={this.submitForm}/>
+                {loading && <CircularProgress size={24} />}
+                <h4>{this.state.data}</h4>
             </div>
         )
     }

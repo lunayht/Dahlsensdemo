@@ -1,29 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
 import { Field, reduxForm } from 'redux-form';
 // Import custom component
 import renderText from './renderText';
 import { Button } from '@material-ui/core';
 
-const styles = ({
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        margin: 'auto',
-        width: '400px',
-    }
-})
-
 class IpScanForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ip: '192.168.1.1',
+            ip: '192.168.1.x',
             port: '80',
             prefix: 'http://root:password',
-            suffix: '/onvif',
+            suffix: 'onvif',
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -33,11 +23,11 @@ class IpScanForm extends React.Component {
     }
   
     render() {
-        const { handleSubmit, onSubmit, classes } = this.props;
+        const { handleSubmit, onSubmit } = this.props;
 
         return (
             <div>
-                <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <Field
                         label="IP Address"
                         type="text"
@@ -79,7 +69,7 @@ class IpScanForm extends React.Component {
                     />
                     <br />
                     <Typography variant="subtitle2">
-                    {this.state.prefix+'@'+this.state.ip+':'+this.state.port+this.state.suffix}
+                    Example URL: {this.state.prefix+'@'+this.state.ip+':'+this.state.port+'/'+this.state.suffix}
                     </Typography>
                     <Button variant="contained" color="primary" type="submit">
                         Scan
@@ -88,6 +78,26 @@ class IpScanForm extends React.Component {
             </div>
         );
     }
+};
+
+const validateKeyIn = values => {
+    const errors = {}
+
+    const requireFields = [
+        'ip', 'port', 'prefix', 'suffix'
+    ]
+
+    requireFields.forEach(field => {
+        if (!values[field]) {
+            errors[field] = 'This field is required.'
+        }
+    })
+
+    if (!/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(values.ip)) {
+        errors['ip'] = 'Invalid IP address'    
+    }
+
+    return errors
 }
 
 IpScanForm.propTypes = {
@@ -95,5 +105,6 @@ IpScanForm.propTypes = {
 };
 
 export default reduxForm({
-    form: 'IpScanForm'
-})(withStyles(styles)(IpScanForm));
+    form: 'IpScanForm',
+    validate: validateKeyIn
+})(IpScanForm);
