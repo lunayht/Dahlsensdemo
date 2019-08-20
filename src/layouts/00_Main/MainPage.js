@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/MainPage.css'
+import '../../styles/MainPage.css'
 import IpScanForm from '../../components/IpScanForm';
 import * as crudAction from '../../actions/crudAction';
 import { connect } from 'react-redux';

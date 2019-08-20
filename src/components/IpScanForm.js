@@ -52,7 +52,7 @@ class IpScanForm extends React.Component {
                         label="URL Prefix"
                         type="text"
                         name="prefix"
-                        placeholder="http://root:password@"
+                        placeholder="http://root:password"
                         component={renderText}
                         value={this.state.value}
                         onChange={this.handleChange}
@@ -62,7 +62,7 @@ class IpScanForm extends React.Component {
                         label="URL Suffix"
                         type="text"
                         name="suffix"
-                        placeholder="/onvif1"
+                        placeholder="onvif1"
                         component={renderText}
                         value={this.state.value}
                         onChange={this.handleChange}
@@ -96,6 +96,8 @@ const validateKeyIn = values => {
     if (!/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(values.ip)) {
         errors['ip'] = 'Invalid IP address'    
     }
+
+    
 
     return errors
 }
