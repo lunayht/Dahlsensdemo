@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import { Field, reduxForm } from 'redux-form';
 import renderText from './renderText';
 import styles from '../styles/styles';
 import history from '../utils/history';
-import { Button, InputAdornment, withStyles } from '@material-ui/core';
+import { Button, InputAdornment, withStyles, TextField } from '@material-ui/core';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
@@ -23,20 +22,35 @@ class IpScanForm extends React.Component {
             ip: '192.168.1.1',
             port: '80',
             prefix: 'root:password',
-            suffix: 'onvif'
+            suffix: 'onvif',
+            url: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.handleTest = this.handleTest.bind(this);
         this.handleScan = this.handleScan.bind(this);
+        this.handleUpdateURL = this.handleUpdateURL.bind(this);
+    }
+
+    handleUpdateURL(e) {
+        this.setState({url: e.target.value})
     }
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+        if (e.target.name === 'prefix') {
+            this.setState({ url: 'http://'+e.target.value+'@'+this.state.ip+':'+this.state.port+'/'+this.state.suffix })
+        } else if (e.target.name === 'ip') {
+            this.setState({ url: 'http://'+this.state.prefix+'@'+e.target.value+':'+this.state.port+'/'+this.state.suffix })
+        } else if (e.target.name === 'port') {
+            this.setState({ url: 'http://'+this.state.prefix+'@'+this.state.ip+':'+e.target.value+'/'+this.state.suffix })
+        } else if (e.target.name === 'suffix') {
+            this.setState({ url: 'http://'+this.state.prefix+'@'+this.state.ip+':'+this.state.port+'/'+e.target.value })
+        }
     };
 
     handleTest() {
-        this.props.actions.testingcam()
+        this.props.actions.testingcam(this.state.url)
     };
 
     handleScan() {
@@ -96,10 +110,15 @@ class IpScanForm extends React.Component {
                         onChange={this.handleChange}
                     />
                     <br />
-                    <Typography component="h6">
-                    Test URL: http://{this.state.prefix+'@'+this.state.ip+':'+this.state.port+'/'+this.state.suffix}
-                    </Typography>
-                    <br />
+                    <TextField
+                        style={{minWidth: 350, margin: 2, marginBottom: 20}}
+                        value={this.state.url}
+                        // value={this.state.value}
+                        variant='outlined'
+                        label='Test URL'
+                        helperText='This is your ip camera URL.'
+                        onChange={this.handleUpdateURL}
+                    />
                     <div className={classes.ipscanbtns}>
                         <Button className={classes.normbtn} variant="contained" color="primary" type="submit" onClick={this.handleTest}>
                             Test

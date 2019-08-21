@@ -11,10 +11,6 @@ export function clickscan(data) {
     }
 }
 
-export function testcam() {
-    history.push('/addcam/test')
-}
-
 export function checkclientlocalip() {
     return function(dispatch) {
         return checkip()
@@ -31,9 +27,9 @@ export function addingcam() {
     }
 }
 
-export function testingcam() {
+export function testingcam(data) {
     return function(dispatch) {
-        dispatch(commonAction.testcam())
+        dispatch(commonAction.testcam(data))
     }
 }
 

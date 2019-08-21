@@ -74,7 +74,7 @@ class AddCamMain extends React.Component {
                 </div>
                 <h4 className='Scan-result'>{this.state.data}</h4>
                 <h4>{this.state.testurl}</h4>
-                <TestDialog ipcamsrc='http://88.168.115.31:8080/videostream.cgi?user=admin&pwd=' open={this.state.test} onClose={this.handleClose} />
+                <TestDialog ipcamsrc={this.props.state.activity.testurl} open={this.state.test} onClose={this.handleClose} />
             </div>
         )
     }

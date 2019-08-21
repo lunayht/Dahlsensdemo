@@ -20,7 +20,8 @@ export default function(state, action) {
         
         case TEST_URL:
             return Object.assign({}, state, {
-                status: 'TESTURL'
+                status: 'TESTURL',
+                testurl: action.data
             })
         
         case SCANIP:

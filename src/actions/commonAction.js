@@ -6,9 +6,10 @@ export function addcam() {
     }
 };
 
-export function testcam() {
+export function testcam(data) {
     return {
-        type: TEST_URL
+        type: TEST_URL,
+        data
     }
 };
 
