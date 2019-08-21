@@ -13,7 +13,8 @@ class AddCamMain extends React.Component {
             localip: null,
             loading: false,
             success: false,
-            data: ''
+            data: '',
+            testurl: ''
         };
         this.submitForm = this.submitForm.bind(this);
     }
@@ -28,17 +29,24 @@ class AddCamMain extends React.Component {
 	}
     
     submitForm(formProps) {
-        this.setState({
-            success: false,
-            loading: true,
-        });
-        this.props.actions.clickscan(formProps).then(data => {
+        if (this.props.state.activity.status === 'TESTURL') {
             this.setState({
-                loading: false,
-                success: true,
-                data: 'Scan Result: ' + JSON.stringify(data.data.response, null, 4)
+                testurl: 'http://'+formProps.prefix+'@'+formProps.ip+':'+formProps.port+'/'+formProps.suffix
             })
-        });
+        } else if (this.props.state.activity.status === 'SCANIP') {
+            this.setState({
+                success: false,
+                loading: true,
+                data: ''
+            });
+            this.props.actions.clickscan(formProps).then(data => {
+                this.setState({
+                    loading: false,
+                    success: true,
+                    data: 'Scan Results: ' + JSON.stringify(data.data.response, null, 4)
+                })
+            });
+        }
     }
 
     render() {
@@ -51,16 +59,21 @@ class AddCamMain extends React.Component {
                 <h3 className='Addcam-Title'>Please enter your camera details: </h3>
                 <div className='Addcam-Form'>
                     <IpScanForm onSubmit={this.submitForm}/>
-                    {loading && <CircularProgress style={{margin: 0}} size={24} />}
+                    {loading && <CircularProgress style={{margin: 20}} size={24} />}
                 </div>
-                <h4>{this.state.data}</h4>
+                <h4 className='Scan-result'>{this.state.data}</h4>
+                <h4>{this.state.testurl}</h4>
             </div>
         )
     }
 };
 
+function mapStateToProps(state) {
+    return { state }
+}
+
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(AddCamMain);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCamMain);

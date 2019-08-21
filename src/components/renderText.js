@@ -7,6 +7,7 @@ const renderText = ({
     label,
     placeholder, 
     type, 
+    defaultValue,
     meta: {touched, error},
     ...custom
 }) => (

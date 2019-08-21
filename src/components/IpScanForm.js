@@ -6,6 +6,9 @@ import renderText from './renderText';
 import styles from '../styles/styles';
 import history from '../utils/history';
 import { Button, InputAdornment, withStyles } from '@material-ui/core';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as crudAction from '../actions/crudAction';
 
 const style = {
     ipscanform: styles.ipscanform,
@@ -20,14 +23,24 @@ class IpScanForm extends React.Component {
             ip: '192.168.1.1',
             port: '80',
             prefix: 'root:password',
-            suffix: 'onvif',
+            suffix: 'onvif'
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleTest = this.handleTest.bind(this);
+        this.handleScan = this.handleScan.bind(this);
     }
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+    };
+
+    handleTest() {
+        this.props.actions.testingcam()
+    };
+
+    handleScan() {
+        this.props.actions.scanningip()
     };
 
     handleCancel() {
@@ -84,24 +97,24 @@ class IpScanForm extends React.Component {
                     />
                     <br />
                     <Typography component="h6">
-                    Example URL: http://{this.state.prefix+'@'+this.state.ip+':'+this.state.port+'/'+this.state.suffix}
+                    Test URL: http://{this.state.prefix+'@'+this.state.ip+':'+this.state.port+'/'+this.state.suffix}
                     </Typography>
                     <br />
                     <div className={classes.ipscanbtns}>
-                        <Button className={classes.normbtn} variant="contained" color="primary" type="button">
+                        <Button className={classes.normbtn} variant="contained" color="primary" type="submit" onClick={this.handleTest}>
                             Test
                         </Button>
-                        <Button className={classes.normbtn} variant="contained" color="primary" type="submit">
+                        <Button className={classes.normbtn} variant="contained" color="primary" type="submit" onClick={this.handleScan}>
                             Scan
                         </Button>
-                        <Button className={classes.normbtn} variant="contained" color="primary" type="button">
+                        <Button className={classes.normbtn} variant="contained" color="primary" type="submit" onClick={this.handleNext}>
                             Next
                         </Button>
                         <Button className={classes.normbtn} variant="contained" color="secondary" type="button" onClick={this.handleCancel}>
                             Cancel
                         </Button>
                     </div>
-                </form>                
+                </form>     
             </div>
         );
     }
@@ -111,7 +124,7 @@ const validateKeyIn = values => {
     const errors = {}
 
     const requireFields = [
-        'ip', 'port', 'prefix', 'suffix'
+        'ip', 'port'
     ]
 
     requireFields.forEach(field => {
@@ -124,16 +137,18 @@ const validateKeyIn = values => {
         errors['ip'] = 'Invalid IP address'    
     }
 
-    
-
     return errors
-}
+};
 
 IpScanForm.propTypes = {
     onSubmit: PropTypes.func.isRequired
 };
 
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
+});
+
 export default reduxForm({
     form: 'IpScanForm',
     validate: validateKeyIn
-})(withStyles(style)(IpScanForm));
+})(connect(null, mapDispatchToProps)(withStyles(style)(IpScanForm)));

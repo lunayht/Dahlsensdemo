@@ -2,10 +2,12 @@ import React from 'react';
 import { Fab, withStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import styles from '../../styles/styles';
-import history from '../../utils/history';
 import CamCard from '../../components/CamCard';
 import img from './example-img.jpg';
 import '../../styles/MainPage.css';
+import * as crudAction from '../../actions/crudAction';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const style = {
     fab: styles.fab,
@@ -15,11 +17,11 @@ class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.handleAdd = this.handleAdd.bind(this)
-    }
+    };
 
     handleAdd() {
-        history.push('/addcam')
-    }
+        this.props.actions.addingcam()
+    };
 
     render() {
         const { classes } = this.props;
@@ -59,4 +61,8 @@ class MainPage extends React.Component {
     }
 }
 
-export default withStyles(style)(MainPage);
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
+})
+
+export default connect(null, mapDispatchToProps)(withStyles(style)(MainPage));

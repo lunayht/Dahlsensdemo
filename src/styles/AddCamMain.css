@@ -19,3 +19,9 @@
     height: 262.5px;
     width: 350px
 }
+
+.Scan-result {
+    text-align: center;
+    font-weight: 400;
+    font-size: medium
+}
