@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { MuiThemeProvider } from '@material-ui/core';
 import AppContainer from './containers/AppContainer';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
-
-const THEME = createMuiTheme({
-    typography: {
-        "fontFamily": "\"-apple-system\", \"BlinkMacSystemFont\", \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", \"sans-serif\""
-    },
-    zIndex: 1400
-})
+import THEME from './styles/MuiTheme';
 
 ReactDOM.render(
     <MuiThemeProvider theme={THEME}>

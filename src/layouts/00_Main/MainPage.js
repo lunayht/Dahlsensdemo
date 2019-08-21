@@ -1,62 +1,48 @@
 import React from 'react';
-import '../../styles/MainPage.css'
-import IpScanForm from '../../components/IpScanForm';
-import * as crudAction from '../../actions/crudAction';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { CircularProgress } from '@material-ui/core';
+import { Fab, withStyles, CardActionArea, CardMedia, CardContent } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import styles from '../../styles/styles';
+import history from '../../utils/history';
+import CamCard from '../../components/CamCard';
+import img from './example-img.jpg';
+
+const style = {
+    fab: styles.fab,
+    cardimg: styles.cardimg,
+    cardcontent: styles.cardcontent,
+    cardtext: styles.cardtext
+}
 
 class MainPage extends React.Component {
     constructor(props) {
-		super(props);
-		this.state ={
-            localip: null,
-            loading: false,
-            success: false,
-            data: ''
-        };
-        this.submitForm = this.submitForm.bind(this);
+        super(props);
+        this.handleAdd = this.handleAdd.bind(this)
     }
 
-    componentDidMount() {
-		this.props.actions.checkclientlocalip()
-			.then(res => {
-				this.setState({
-					localip: res.data.localip
-				})
-			})
-	}
-    
-    submitForm(formProps) {
-        this.setState({
-            success: false,
-            loading: true,
-        });
-        this.props.actions.clickscan(formProps).then(data => {
-            this.setState({
-                loading: false,
-                success: true,
-                data: JSON.stringify(data.data.response, null, 4)
-            })
-        });
+    handleAdd() {
+        history.push('/addcam')
     }
 
     render() {
-        const { loading } = this.state;
+        const { classes } = this.props;
 
         return(
-            <div className='App'>
-                <h1>Your local IP address is {this.state.localip}</h1>
-                <IpScanForm onSubmit={this.submitForm}/>
-                {loading && <CircularProgress size={24} />}
-                <h4>{this.state.data}</h4>
+            <div>
+                <CamCard>
+                    {/* <CardActionArea> */}
+                        <CardMedia className={classes.cardimg} image={img} title='Example Title' />
+                        <CardContent className={classes.cardcontent}>
+                            <h2 className={classes.cardtext}>Example</h2>
+                            <p className={classes.cardtext}>blablabla</p>
+                        </CardContent>
+                    {/* </CardActionArea> */}
+                </CamCard>
+                <Fab onClick={this.handleAdd} className={classes.fab} color='primary' aria-label='add'>
+                    <AddIcon />
+                </Fab>
             </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
-})
-
-export default connect(null, mapDispatchToProps)(MainPage);
+export default withStyles(style)(MainPage);
