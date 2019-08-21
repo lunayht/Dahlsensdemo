@@ -124,7 +124,7 @@ const validateKeyIn = values => {
     const errors = {}
 
     const requireFields = [
-        'ip', 'port'
+        'ip', 'port', 'prefix', 'suffix'
     ]
 
     requireFields.forEach(field => {

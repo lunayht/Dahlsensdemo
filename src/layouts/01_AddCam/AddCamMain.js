@@ -5,6 +5,7 @@ import * as crudAction from '../../actions/crudAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CircularProgress } from '@material-ui/core';
+import TestDialog from '../../components/TestDialog';
 
 class AddCamMain extends React.Component {
     constructor(props) {
@@ -13,11 +14,13 @@ class AddCamMain extends React.Component {
             localip: null,
             loading: false,
             success: false,
+            test: false,
             data: '',
             testurl: ''
         };
         this.submitForm = this.submitForm.bind(this);
-    }
+        this.handleClose = this.handleClose.bind(this);
+    };
 
     componentDidMount() {
 		this.props.actions.checkclientlocalip()
@@ -26,13 +29,21 @@ class AddCamMain extends React.Component {
 					localip: res.data.localip
 				})
 			})
-	}
+	};
+
+    handleClose() {
+        this.setState({
+            test: false
+        })
+    };
     
     submitForm(formProps) {
         if (this.props.state.activity.status === 'TESTURL') {
             this.setState({
+                test: true,
                 testurl: 'http://'+formProps.prefix+'@'+formProps.ip+':'+formProps.port+'/'+formProps.suffix
             })
+
         } else if (this.props.state.activity.status === 'SCANIP') {
             this.setState({
                 success: false,
@@ -47,7 +58,7 @@ class AddCamMain extends React.Component {
                 })
             });
         }
-    }
+    };
 
     render() {
         const { loading } = this.state;
@@ -63,6 +74,7 @@ class AddCamMain extends React.Component {
                 </div>
                 <h4 className='Scan-result'>{this.state.data}</h4>
                 <h4>{this.state.testurl}</h4>
+                <TestDialog ipcamsrc='http://88.168.115.31:8080/videostream.cgi?user=admin&pwd=' open={this.state.test} onClose={this.handleClose} />
             </div>
         )
     }
