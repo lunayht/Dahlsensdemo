@@ -15,8 +15,7 @@ class AddCamMain extends React.Component {
             loading: false,
             success: false,
             test: false,
-            data: '',
-            testurl: ''
+            data: ''
         };
         this.submitForm = this.submitForm.bind(this);
         this.handleClose = this.handleClose.bind(this);
@@ -40,8 +39,7 @@ class AddCamMain extends React.Component {
     submitForm(formProps) {
         if (this.props.state.activity.status === 'TESTURL') {
             this.setState({
-                test: true,
-                testurl: 'http://'+formProps.prefix+'@'+formProps.ip+':'+formProps.port+'/'+formProps.suffix
+                test: true
             })
 
         } else if (this.props.state.activity.status === 'SCANIP') {
@@ -73,7 +71,6 @@ class AddCamMain extends React.Component {
                     {loading && <CircularProgress style={{margin: 20}} size={24} />}
                 </div>
                 <h4 className='Scan-result'>{this.state.data}</h4>
-                <h4>{this.state.testurl}</h4>
                 <TestDialog ipcamsrc={this.props.state.activity.testurl} open={this.state.test} onClose={this.handleClose} />
             </div>
         )
