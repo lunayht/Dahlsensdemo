@@ -29,34 +29,25 @@ class MainPage extends React.Component {
                 <div className='content'>
                     <div className='row'>
                         <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S70 SAW' Description='Nothing'/>
+                            <CamCard img={img} Title='S70 SAW' Description='Description'/>
                         </div>
                         <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S90 SAW' Description='Nothing'/>
+                            <CamCard img={img} Title='S90 SAW' Description='Description'/>
                         </div>
                         <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S80 SAW' Description='Nothing'/>
+                            <CamCard img={img} Title='Forklift Zone 1' Description='Description'/>
                         </div>
                         <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S50 SAW' Description='Nothing'/>
+                            <CamCard img={img} Title='Forklift Zone 2' Description='Description'/>
                         </div>
                         <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S70 SAW' Description='Nothing'/>
+                            <CamCard img={img} Title='Racking Zone' Description='Description'/>
                         </div>
                         <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S80 SAW' Description='Nothing'/>
+                            <CamCard img={img} Title='Frame Stack Pro' Description='Description'/>
                         </div>
                         <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S50 SAW' Description='Nothing'/>
-                        </div>
-                        <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S70 SAW' Description='Nothing'/>
-                        </div>
-                        <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S80 SAW' Description='Nothing'/>
-                        </div>
-                        <div className="col-3 col-s-12">
-                            <CamCard img={img} Title='S50 SAW' Description='Nothing'/>
+                            <CamCard img={img} Title='LE SAW' Description='Description'/>
                         </div>
                     </div>
                 </div>

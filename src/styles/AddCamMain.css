@@ -1,0 +1,21 @@
+.Page {
+    margin: 0px 25px 0px 25px;
+}
+
+.Addcam-Title {
+    text-align: center;
+}
+
+.Addcam-Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.Addcam-ImagePlaceholder {
+    border: 1.5px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    height: 262.5px;
+    width: 350px
+}

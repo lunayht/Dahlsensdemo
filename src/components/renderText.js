@@ -11,6 +11,7 @@ const renderText = ({
     ...custom
 }) => (
     <TextField
+        style={{minWidth: 350, margin: 2}}
         type={type}
         label={label}
         error={touched && error}

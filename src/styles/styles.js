@@ -23,6 +23,16 @@ const styles = {
         height: 250,
         marginTop: 20,
         marginBottom: 0
+    },
+    ipscanform: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    normbtn: {
+        marginLeft: 10,
+        marginRight: 10,
+        width: 80
     }
 };
 

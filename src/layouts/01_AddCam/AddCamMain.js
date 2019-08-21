@@ -1,13 +1,12 @@
 import React from 'react';
-import '../../styles/MainPage.css';
+import '../../styles/AddCamMain.css';
 import IpScanForm from '../../components/IpScanForm';
 import * as crudAction from '../../actions/crudAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CircularProgress } from '@material-ui/core';
 
-
-class AddCam extends React.Component {
+class AddCamMain extends React.Component {
     constructor(props) {
 		super(props);
 		this.state ={
@@ -37,7 +36,7 @@ class AddCam extends React.Component {
             this.setState({
                 loading: false,
                 success: true,
-                data: JSON.stringify(data.data.response, null, 4)
+                data: 'Scan Result: ' + JSON.stringify(data.data.response, null, 4)
             })
         });
     }
@@ -46,10 +45,14 @@ class AddCam extends React.Component {
         const { loading } = this.state;
 
         return(
-            <div className='App'>
-                <h1>Your local IP address is {this.state.localip}</h1>
-                <IpScanForm onSubmit={this.submitForm}/>
-                {loading && <CircularProgress size={24} />}
+            <div className='Page'>
+                <h1 className='Addcam-Title'>Add IP Camera</h1>
+                {/* <p>Your local IP address is {this.state.localip}</p> */}
+                <h3 className='Addcam-Title'>Please enter your camera details: </h3>
+                <div className='Addcam-Form'>
+                    <IpScanForm onSubmit={this.submitForm}/>
+                    {loading && <CircularProgress style={{margin: 0}} size={24} />}
+                </div>
                 <h4>{this.state.data}</h4>
             </div>
         )
@@ -60,4 +63,4 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(AddCam);
+export default connect(null, mapDispatchToProps)(AddCamMain);

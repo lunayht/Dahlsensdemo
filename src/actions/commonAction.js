@@ -1,8 +1,8 @@
-import { FAILURE } from '../constants/actionType';
+import { SCAN_FAILURE } from '../constants/actionType';
 
 export function failure(error) {
     return {
-        type: FAILURE,
+        type: SCAN_FAILURE,
         error: error
     }
 };

@@ -2,32 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { Field, reduxForm } from 'redux-form';
-// Import custom component
 import renderText from './renderText';
-import { Button } from '@material-ui/core';
+import styles from '../styles/styles';
+import history from '../utils/history';
+import { Button, InputAdornment, withStyles } from '@material-ui/core';
+
+const style = {
+    ipscanform: styles.ipscanform,
+    ipscanbtns: styles.appbar,
+    normbtn: styles.normbtn
+}
 
 class IpScanForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ip: '192.168.1.x',
+            ip: '192.168.1.1',
             port: '80',
-            prefix: 'http://root:password',
+            prefix: 'root:password',
             suffix: 'onvif',
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-    }
+    };
+
+    handleCancel() {
+        history.push('/')
+    };
   
     render() {
-        const { handleSubmit, onSubmit } = this.props;
+        const { handleSubmit, onSubmit, classes } = this.props;
 
         return (
             <div>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form className={classes.ipscanform} onSubmit={handleSubmit(onSubmit)}>
                     <Field
                         label="IP Address"
                         type="text"
@@ -39,7 +51,7 @@ class IpScanForm extends React.Component {
                     />
                     <br />
                     <Field
-                        label="Ports to Scan"
+                        label="Port Number"
                         type="text"
                         name="port"
                         placeholder="e.g. 80,81,8080,80 - 8080"
@@ -52,10 +64,13 @@ class IpScanForm extends React.Component {
                         label="URL Prefix"
                         type="text"
                         name="prefix"
-                        placeholder="http://root:password"
+                        placeholder="root:password"
                         component={renderText}
                         value={this.state.value}
                         onChange={this.handleChange}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">http://</InputAdornment>
+                        }}
                     />
                     <br />
                     <Field
@@ -68,12 +83,24 @@ class IpScanForm extends React.Component {
                         onChange={this.handleChange}
                     />
                     <br />
-                    <Typography variant="subtitle2">
-                    Example URL: {this.state.prefix+'@'+this.state.ip+':'+this.state.port+'/'+this.state.suffix}
+                    <Typography component="h6">
+                    Example URL: http://{this.state.prefix+'@'+this.state.ip+':'+this.state.port+'/'+this.state.suffix}
                     </Typography>
-                    <Button variant="contained" color="primary" type="submit">
-                        Scan
-                    </Button>
+                    <br />
+                    <div className={classes.ipscanbtns}>
+                        <Button className={classes.normbtn} variant="contained" color="primary" type="button">
+                            Test
+                        </Button>
+                        <Button className={classes.normbtn} variant="contained" color="primary" type="submit">
+                            Scan
+                        </Button>
+                        <Button className={classes.normbtn} variant="contained" color="primary" type="button">
+                            Next
+                        </Button>
+                        <Button className={classes.normbtn} variant="contained" color="secondary" type="button" onClick={this.handleCancel}>
+                            Cancel
+                        </Button>
+                    </div>
                 </form>                
             </div>
         );
@@ -109,4 +136,4 @@ IpScanForm.propTypes = {
 export default reduxForm({
     form: 'IpScanForm',
     validate: validateKeyIn
-})(IpScanForm);
+})(withStyles(style)(IpScanForm));
