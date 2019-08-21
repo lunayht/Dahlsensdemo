@@ -1,3 +1,59 @@
-.App {
-  text-align: center;
+.content {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 10px;
+	margin-right: 10px
+}
+
+[class*="col-"] {
+	float: left;
+	padding: 10px 20px 0px 20px;
+}
+  
+/* For mobile phones: */
+[class*="col-"] {
+	width: 100%;
+}
+
+[class*="char-"] {
+    width: 100%;
+}
+
+[class*="char-"] {
+	float: left;
+	padding: 20px;
+	padding-bottom: 0px
+}
+  
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+	.col-s-3 {width: 25%;}
+	.col-s-6 {width: 50%;}
+	.col-s-9 {width: 75%;}
+	.col-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 915px) {
+    /* For desktop: */
+    .col-3 {width: 25%;}
+    .col-6 {width: 50%;}
+    .col-9 {width: 75%;}
+    .col-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+	.char-s-3 {width: 25%;}
+	.char-s-6 {width: 50%;}
+	.char-s-9 {width: 75%;}
+	.char-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 915px) {
+    /* For desktop: */
+    .char-3 {width: 25%;}
+    .char-6 {width: 50%;}
+    .char-9 {width: 75%;}
+    .char-12 {width: 100%;}
 }

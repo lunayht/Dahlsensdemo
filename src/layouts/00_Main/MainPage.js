@@ -1,16 +1,14 @@
 import React from 'react';
-import { Fab, withStyles, CardActionArea, CardMedia, CardContent } from '@material-ui/core';
+import { Fab, withStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import styles from '../../styles/styles';
 import history from '../../utils/history';
 import CamCard from '../../components/CamCard';
 import img from './example-img.jpg';
+import '../../styles/MainPage.css';
 
 const style = {
     fab: styles.fab,
-    cardimg: styles.cardimg,
-    cardcontent: styles.cardcontent,
-    cardtext: styles.cardtext
 }
 
 class MainPage extends React.Component {
@@ -28,15 +26,40 @@ class MainPage extends React.Component {
 
         return(
             <div>
-                <CamCard>
-                    {/* <CardActionArea> */}
-                        <CardMedia className={classes.cardimg} image={img} title='Example Title' />
-                        <CardContent className={classes.cardcontent}>
-                            <h2 className={classes.cardtext}>Example</h2>
-                            <p className={classes.cardtext}>blablabla</p>
-                        </CardContent>
-                    {/* </CardActionArea> */}
-                </CamCard>
+                <div className='content'>
+                    <div className='row'>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S70 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S90 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S80 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S50 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S70 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S80 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S50 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S70 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S80 SAW' Description='Nothing'/>
+                        </div>
+                        <div className="col-3 col-s-12">
+                            <CamCard img={img} Title='S50 SAW' Description='Nothing'/>
+                        </div>
+                    </div>
+                </div>
                 <Fab onClick={this.handleAdd} className={classes.fab} color='primary' aria-label='add'>
                     <AddIcon />
                 </Fab>
