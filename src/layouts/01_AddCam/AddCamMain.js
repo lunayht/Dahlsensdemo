@@ -50,9 +50,9 @@ class AddCamMain extends React.Component {
                     store.dispatch(testsuccess(data.data.url))
                 } else {
                     this.setState({
-                        warning: 'Invalid URL. Please try again.'
+                        warning: data.data.url + ' is an invalid URL. Please try again.'
                     })
-                    store.dispatch(testfailure())
+                    store.dispatch(testfailure(data.data.url))
                 }
             })
         } else if (this.props.state.activity.status === 'SCANIP') {

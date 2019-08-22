@@ -1,8 +1,15 @@
-import { SCAN_FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE } from '../constants/actionType';
+import { SCAN_FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL } from '../constants/actionType';
 
-export function testfailure() {
+export function normal() {
     return {
-        type: TEST_FAILURE
+        type: NORMAL
+    }
+}
+
+export function testfailure(data) {
+    return {
+        type: TEST_FAILURE,
+        data
     }
 }
 

@@ -8,6 +8,8 @@ import { Button, InputAdornment, withStyles, TextField } from '@material-ui/core
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
+import store from '../store/store';
+import { normal } from '../actions/commonAction';
 
 const style = {
     ipscanform: styles.ipscanform,
@@ -58,6 +60,7 @@ class IpScanForm extends React.Component {
     };
 
     handleCancel() {
+        store.dispatch(normal())
         history.push('/')
     };
   

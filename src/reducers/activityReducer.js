@@ -9,9 +9,7 @@ export default function(state, action) {
 
     switch (action.type) {
         case NORMAL:
-            return Object.assign({}, state, {
-                status: 'NORMAL'
-            })
+            return Object.assign({}, initialState)
 
         case ADDCAM:
             return Object.assign({}, state, {
@@ -26,7 +24,8 @@ export default function(state, action) {
 
         case TEST_FAILURE:
             return Object.assign({}, state, {
-                status: 'TEST_FAILED'
+                status: 'TEST_FAILED',
+                failedurl: action.data
             })
 
         case TEST_SUCCESS:
