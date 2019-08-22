@@ -23,6 +23,7 @@
     "connected-react-router": "^6.5.2",
     "cors": "^2.8.5",
     "dbip": "^1.0.0",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "helmet": "^3.20.0",
     "history": "^4.9.0",
