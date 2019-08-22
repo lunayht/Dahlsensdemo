@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CircularProgress } from '@material-ui/core';
 import TestDialog from '../../components/TestDialog';
+import store from '../../store/store';
+import { testsuccess, testfailure } from '../../actions/commonAction';
 
 class AddCamMain extends React.Component {
     constructor(props) {
@@ -15,7 +17,7 @@ class AddCamMain extends React.Component {
             loading: false,
             success: false,
             test: false,
-            data: '',
+            scanresult: '',
             warning: ''
         };
         this.submitForm = this.submitForm.bind(this);
@@ -42,28 +44,28 @@ class AddCamMain extends React.Component {
             this.props.actions.testurl(this.props.state.activity.testurl).then(data => {
                 if (data.data.testsuccess) {
                     this.setState({
-                        test: true
+                        test: true,
+                        warning: ''
                     })
+                    store.dispatch(testsuccess(data.data.url))
                 } else {
                     this.setState({
                         warning: 'Invalid URL. Please try again.'
                     })
+                    store.dispatch(testfailure())
                 }
             })
-            // this.setState({
-            //     test: true
-            // })
         } else if (this.props.state.activity.status === 'SCANIP') {
             this.setState({
                 success: false,
                 loading: true,
-                data: ''
+                scanresult: ''
             });
             this.props.actions.clickscan(formProps).then(data => {
                 this.setState({
                     loading: false,
                     success: true,
-                    data: 'Scan Results: ' + JSON.stringify(data.data.response, null, 4)
+                    scanresult: 'Scan Results: ' + JSON.stringify(data.data.response, null, 4)
                 })
             });
         }
@@ -81,9 +83,9 @@ class AddCamMain extends React.Component {
                     <IpScanForm onSubmit={this.submitForm}/>
                     {loading && <CircularProgress style={{margin: 20}} size={24} />}
                 </div>
-                <h4 className='Scan-result'>{this.state.data}</h4>
+                <h4 className='Scan-result'>{this.state.scanresult}</h4>
                 <h2 className='Test-result'>{this.state.warning}</h2>
-                <TestDialog ipcamsrc={this.props.state.activity.testurl} open={this.state.test} onClose={this.handleClose} />
+                <TestDialog ipcamsrc={this.props.state.activity.validurl} open={this.state.test} onClose={this.handleClose} />
             </div>
         )
     }

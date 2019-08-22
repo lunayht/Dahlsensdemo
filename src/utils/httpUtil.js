@@ -25,12 +25,7 @@ export function check() {
 
 export function sendurl(url) {
     return axios
-        .post(serveraddress + '/imgurl', url, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
+        .post(serveraddress + '/imgurl', url)
         .catch((err) => {
             console.log(err)
         });

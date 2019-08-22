@@ -12,15 +12,17 @@ export function savescreenshot(req, res) {
 
 export function checkurl(req, res) {
     const { url } = req.body
-    http.get(url, function(res) {
+    http.get(url, function() {
         console.log('URL test success')
         res.json({
             testsuccess: true,
-        });
+            url: url
+        })
     }).on('error', function(err) {
         console.log('URL test failed')
         res.json({
-            testsuccess: false
-        })
+            testsuccess: false,
+            url: url
+        });
     })
 }

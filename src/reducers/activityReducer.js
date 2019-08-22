@@ -1,4 +1,4 @@
-import { ADDCAM, NORMAL, TEST_URL, SCANIP } from "../constants/actionType";
+import { ADDCAM, NORMAL, TEST_URL, SCANIP, TEST_FAILURE, TEST_SUCCESS } from "../constants/actionType";
 
 var initialState = {
     status: 'NORMAL'
@@ -22,6 +22,17 @@ export default function(state, action) {
             return Object.assign({}, state, {
                 status: 'TESTURL',
                 testurl: action.data
+            })
+
+        case TEST_FAILURE:
+            return Object.assign({}, state, {
+                status: 'TEST_FAILED'
+            })
+
+        case TEST_SUCCESS:
+            return Object.assign({}, state, {
+                status: 'TEST_SUCCESS',
+                validurl: action.data
             })
         
         case SCANIP:
