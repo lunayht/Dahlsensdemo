@@ -4,6 +4,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run migrate`
+Create database table. <br>
+Before this, please create a user and database in mysql based on the following info: <br>
+- `host: 'localhost'` 
+- `user: 'lauretta'`
+- `password: 'dahlsens'`
+- `database: 'dahlsens'`
+Useful link: [How to create MySQL User and Database](https://www.a2hosting.sg/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line)
+
 ### `npm run dev`
 
 Runs `npm run start` and `npm run start:server` concurrently.<br>
