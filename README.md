@@ -12,6 +12,7 @@ Before this, please create a user and database in mysql based on the following i
 - `password: 'dahlsens'`
 - `database: 'dahlsens'` 
 <br>
+<br />
 Useful link: [How to create MySQL User and Database](https://www.a2hosting.sg/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line) , [Reset password using ALTER command MySQL 5.7.6 or later](https://stackoverflow.com/questions/33467337/reset-mysql-root-password-using-alter-user-statement-after-install-on-mac)
 
 ### `npm run dev`
