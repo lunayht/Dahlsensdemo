@@ -66,10 +66,10 @@ export function testurl(url) {
     }
 }
 
-export function nextnsave() {
+export function nextnsave(url) {
     history.push('/savecam')
     return function(dispatch) {
-        dispatch(commonAction.nextnsave())
+        dispatch(commonAction.nextnsave(url))
     }
 }
 

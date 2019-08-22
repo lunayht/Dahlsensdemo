@@ -46,8 +46,9 @@ export function failure(error) {
     }
 };
 
-export function nextnsave() {
+export function nextnsave(url) {
     return {
-        type: NEXT_N_SAVE
+        type: NEXT_N_SAVE,
+        url
     }
 }

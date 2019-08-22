@@ -25,7 +25,7 @@ class SaveCamMain extends React.Component {
                 Save Camera page. Need to show details:
                 <h4>Camera screenshot</h4>
                 <h4>Camera Title</h4>
-                <h4>URL</h4>
+                <h4>URL : {this.props.state.activity.finalurl}</h4>
                 <h4>Notes</h4>
                 <Button variant='contained' onClick={this.handleBack}>back</Button>
                 <Button variant='contained'>confirm and save</Button>
@@ -35,8 +35,12 @@ class SaveCamMain extends React.Component {
     }
 };
 
+function mapStateToProps(state) {
+    return { state }
+};
+
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
 });
 
-export default (connect(null, mapDispatchToProps))(SaveCamMain);
+export default (connect(mapStateToProps, mapDispatchToProps))(SaveCamMain);

@@ -58,7 +58,7 @@ class IpScanForm extends React.Component {
     };
 
     handleNext() {
-        this.props.actions.nextnsave()
+        this.props.actions.nextnsave(this.state.url)
     };
 
     handleCancel() {
