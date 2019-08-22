@@ -57,7 +57,8 @@ class AddCamMain extends React.Component {
         } else if (this.props.state.activity.status === 'SCANIP') {
             this.setState({
                 loading: true,
-                scanresult: ''
+                scanresult: '',
+                warning: ''
             });
             this.props.actions.clickscan(formProps).then(data => {
                 this.setState({
