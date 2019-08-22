@@ -168,5 +168,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default reduxForm({
     form: 'IpScanForm',
-    validate: validateKeyIn
+    // validate: validateKeyIn
 })(connect(null, mapDispatchToProps)(withStyles(style)(IpScanForm)));
