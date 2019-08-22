@@ -21,14 +21,14 @@ class AddCamMain extends React.Component {
         this.handleClose = this.handleClose.bind(this);
     };
 
-    componentDidMount() {
-		this.props.actions.checkclientlocalip()
-			.then(res => {
-				this.setState({
-					localip: res.data.localip
-				})
-			})
-	};
+    // componentDidMount() {
+	// 	this.props.actions.checkclientlocalip()
+	// 		.then(res => {
+	// 			this.setState({
+	// 				localip: res.data.localip
+	// 			})
+	// 		})
+	// };
 
     handleClose() {
         this.setState({
@@ -41,7 +41,6 @@ class AddCamMain extends React.Component {
             this.setState({
                 test: true
             })
-
         } else if (this.props.state.activity.status === 'SCANIP') {
             this.setState({
                 success: false,
@@ -79,7 +78,7 @@ class AddCamMain extends React.Component {
 
 function mapStateToProps(state) {
     return { state }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, crudAction), dispatch)

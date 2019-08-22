@@ -1,4 +1,4 @@
-import { startscan, checkip } from '../services/httpService';
+import { startscan, checkip, sendimageurl } from '../services/httpService';
 import * as commonAction from './commonAction';
 import history from '../utils/history';
 
@@ -36,5 +36,15 @@ export function testingcam(data) {
 export function scanningip() {
     return function(dispatch) {
         dispatch(commonAction.scancam())
+    }
+}
+
+export function saveimage(url) {
+    var data = { 'url': url }
+    return function(dispatch) {
+        return sendimageurl(data)
+        .catch((error) => {
+            dispatch(commonAction.failure(error))
+        })
     }
 }
