@@ -5,7 +5,7 @@ const saveRoutes = express.Router();
 
 saveRoutes.route('/imgurl')
     .post((req, res) => {
-        saveCtrl.savescreenshot(req, res)
+        saveCtrl.checkurl(req, res)
     })
 
 export default saveRoutes;

@@ -25,3 +25,10 @@
     font-weight: 400;
     font-size: medium
 }
+
+.Test-result {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: medium
+}
