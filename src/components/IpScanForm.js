@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import renderText from './renderText';
 import styles from '../styles/styles';
-import history from '../utils/history';
 import { Button, InputAdornment, withStyles, TextField } from '@material-ui/core';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
-import store from '../store/store';
-import { normal } from '../actions/commonAction';
 
 const style = {
     ipscanform: styles.ipscanform,
@@ -60,8 +57,7 @@ class IpScanForm extends React.Component {
     };
 
     handleCancel() {
-        store.dispatch(normal())
-        history.push('/')
+        this.props.actions.normal()
     };
   
     render() {
