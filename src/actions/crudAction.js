@@ -3,6 +3,7 @@ import * as commonAction from './commonAction';
 import history from '../utils/history';
 
 export function normal() {
+    history.push('/')
     return function(dispatch) {
         dispatch(commonAction.normal())
     }
@@ -62,5 +63,19 @@ export function testurl(url) {
         .catch((error) => {
             dispatch(commonAction.failure(error))
         })
+    }
+}
+
+export function nextnsave() {
+    history.push('/savecam')
+    return function(dispatch) {
+        dispatch(commonAction.nextnsave())
+    }
+}
+
+export function back() {
+    history.push('/addcam')
+    return function(dispatch) {
+        dispatch(commonAction.addcam())
     }
 }

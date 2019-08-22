@@ -29,6 +29,7 @@ class IpScanForm extends React.Component {
         this.handleTest = this.handleTest.bind(this);
         this.handleScan = this.handleScan.bind(this);
         this.handleUpdateURL = this.handleUpdateURL.bind(this);
+        this.handleNext = this.handleNext.bind(this);
     }
 
     handleUpdateURL(e) {
@@ -54,6 +55,10 @@ class IpScanForm extends React.Component {
 
     handleScan() {
         this.props.actions.scanningip()
+    };
+
+    handleNext() {
+        this.props.actions.nextnsave()
     };
 
     handleCancel() {
@@ -138,25 +143,25 @@ class IpScanForm extends React.Component {
     }
 };
 
-const validateKeyIn = values => {
-    const errors = {}
+// const validateKeyIn = values => {
+//     const errors = {}
 
-    const requireFields = [
-        'ip', 'port', 'prefix', 'suffix'
-    ]
+//     const requireFields = [
+//         'ip', 'port', 'prefix', 'suffix'
+//     ]
 
-    requireFields.forEach(field => {
-        if (!values[field]) {
-            errors[field] = 'This field is required.'
-        }
-    })
+//     requireFields.forEach(field => {
+//         if (!values[field]) {
+//             errors[field] = 'This field is required.'
+//         }
+//     })
 
-    if (!/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(values.ip)) {
-        errors['ip'] = 'Invalid IP address'    
-    }
+//     if (!/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(values.ip)) {
+//         errors['ip'] = 'Invalid IP address'    
+//     }
 
-    return errors
-};
+//     return errors
+// };
 
 IpScanForm.propTypes = {
     onSubmit: PropTypes.func.isRequired

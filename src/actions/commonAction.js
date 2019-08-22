@@ -1,4 +1,4 @@
-import { SCAN_FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL } from '../constants/actionType';
+import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL, NEXT_N_SAVE } from '../constants/actionType';
 
 export function normal() {
     return {
@@ -41,7 +41,13 @@ export function scancam() {
 
 export function failure(error) {
     return {
-        type: SCAN_FAILURE,
+        type: FAILURE,
         error: error
     }
 };
+
+export function nextnsave() {
+    return {
+        type: NEXT_N_SAVE
+    }
+}

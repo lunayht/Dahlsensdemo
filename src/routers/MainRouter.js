@@ -4,12 +4,14 @@ import { ConnectedRouter } from 'connected-react-router';
 import history from '../utils/history';
 import MainPage from '../layouts/00_Main/MainPage';
 import AddCamMain from '../layouts/01_AddCam/AddCamMain';
+import SaveCamMain from '../layouts/01_AddCam/SaveCamMain';
 
 const MainRouter = () => (
     <ConnectedRouter history={history}>
         <Switch>
             <Route exact path='/' component={MainPage} />
             <Route path='/addcam' component={AddCamMain} />
+            <Route path='/savecam' component={SaveCamMain} />
         </Switch>
     </ConnectedRouter>
 );

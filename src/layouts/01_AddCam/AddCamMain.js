@@ -15,7 +15,6 @@ class AddCamMain extends React.Component {
 		this.state ={
             localip: null,
             loading: false,
-            success: false,
             test: false,
             scanresult: '',
             warning: ''
@@ -57,16 +56,23 @@ class AddCamMain extends React.Component {
             })
         } else if (this.props.state.activity.status === 'SCANIP') {
             this.setState({
-                success: false,
                 loading: true,
                 scanresult: ''
             });
             this.props.actions.clickscan(formProps).then(data => {
                 this.setState({
                     loading: false,
-                    success: true,
-                    scanresult: 'Scan Results: ' + JSON.stringify(data.data.response, null, 4)
-                })
+                });
+                var dataArray = data.data.response;
+                if (dataArray.length === 0) {
+                    this.setState({
+                        scanresult: 'No available ports found.'
+                    })
+                } else {
+                    this.setState({
+                        scanresult: 'Scan Results: ' + dataArray
+                    })
+                }
             });
         }
     };

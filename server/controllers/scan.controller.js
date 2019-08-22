@@ -8,15 +8,15 @@ const keepAliveAgent = new http.Agent({
     maxSockets: 100
 });
 
-var temports = []
-var data = {};
 var key = 'response';
-data[key] = [];
 
 let block = new Netmask(ipAdd + '/24');
 
 export function scanresult(req, res) {
-    console.log('Scanning now..........')
+    console.log('Scanning now..........');
+    var temports = []
+    var data = {};
+    data[key] = [];
     var entries = req.body.port.split(',');
     var length = entries.length;
     var i, entry, low, high, range;
