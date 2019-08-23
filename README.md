@@ -24,3 +24,6 @@ Backend server will be running on port 5000.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
+## Remarks
+Before running the app, please disable [Same-Origin Policy in Chrome to fix no 'Access-Control-Allow-Origin' header issue](https://www.codevoila.com/post/75/how-to-disable-same-origin-policy-in-chrome). For Firefox user, please install this [extension](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) to bypass CORS policy. 
