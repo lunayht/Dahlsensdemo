@@ -47,7 +47,9 @@ export default function(state, action) {
         case NEXT_N_SAVE: 
             return Object.assign({}, state, {
                 status: 'NEXT_N_SAVE',
-                finalurl: action.url
+                finalurl: action.url,
+                testurl: '',
+                validurl: ''
             })
 
         default:

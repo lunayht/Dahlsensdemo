@@ -33,6 +33,11 @@ const styles = {
         marginLeft: 10,
         marginRight: 10,
         width: 80
+    },
+    nextbtn: {
+        marginLeft: 10,
+        marginRight: 10,
+        width: 180
     }
 };
 
