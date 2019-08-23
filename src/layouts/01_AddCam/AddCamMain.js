@@ -41,17 +41,19 @@ class AddCamMain extends React.Component {
     submitForm(formProps) {
         if (this.props.state.activity.status === 'TESTURL') {
             this.props.actions.testurl(this.props.state.activity.testurl).then(data => {
-                if (data.data.testsuccess) {
+                console.log(data.data)
+                if (!data.data.testsuccess) {
+                    this.setState({
+                        warning: data.data.url + ' is an invalid URL. Please try again.'
+                    })
+                    store.dispatch(testfailure(data.data.url))
+                    
+                } else {
                     this.setState({
                         test: true,
                         warning: ''
                     })
                     store.dispatch(testsuccess(data.data.url))
-                } else {
-                    this.setState({
-                        warning: data.data.url + ' is an invalid URL. Please try again.'
-                    })
-                    store.dispatch(testfailure(data.data.url))
                 }
             })
         } else if (this.props.state.activity.status === 'SCANIP') {

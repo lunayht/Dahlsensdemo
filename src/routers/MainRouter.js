@@ -5,6 +5,7 @@ import history from '../utils/history';
 import MainPage from '../layouts/00_Main/MainPage';
 import AddCamMain from '../layouts/01_AddCam/AddCamMain';
 import SaveCamMain from '../layouts/01_AddCam/SaveCamMain';
+import TestPage from '../layouts/01_AddCam/TestPage';
 
 const MainRouter = () => (
     <ConnectedRouter history={history}>
@@ -12,6 +13,7 @@ const MainRouter = () => (
             <Route exact path='/' component={MainPage} />
             <Route path='/addcam' component={AddCamMain} />
             <Route path='/savecam' component={SaveCamMain} />
+            <Route path='/test' component={TestPage} />
         </Switch>
     </ConnectedRouter>
 );

@@ -8,4 +8,9 @@ saveRoutes.route('/imgurl')
         saveCtrl.checkurl(req, res)
     })
 
+saveRoutes.route('/saveimg')
+    .post((req, res) => {
+        saveCtrl.savescreenshot(req, res)
+    })
+
 export default saveRoutes;
