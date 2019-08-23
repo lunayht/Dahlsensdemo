@@ -4,10 +4,14 @@ import { Dialog, DialogActions, Button } from '@material-ui/core';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
+import '../styles/TestDialog.css'
 
 class TestDialog extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            msg: ''
+        };
         this.handleClose = this.handleClose.bind(this);
         this.handleSaveImage = this.handleSaveImage.bind(this);
     }
@@ -17,25 +21,21 @@ class TestDialog extends React.Component {
     }
 
     handleSaveImage() {
-        var img = new Image();
-        img.crossOrigin = 'Anonymous';
-
         const imgwh = document.getElementById('target');
-        img.src = imgwh.src;
+        var canvas = document.createElement("canvas");
+        
+        canvas.width = imgwh.width;
+        canvas.height = imgwh.height;
 
-        img.onload = function() {
-            var canvas = document.createElement("canvas");
-            canvas.width = imgwh.width;
-            canvas.height = imgwh.height;
-    
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(this, 0, 0);
-            
-            const dataURL = canvas.toDataURL("image/png");
-            const b64 = dataURL.split(',');
-            console.log(b64[1]);
-        };
-        // this.props.actions.saveimage(this.props.state.activity.testurl)
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(imgwh, 0, 0);
+
+        const dataURL = canvas.toDataURL("image/png");
+        const b64 = dataURL.split(',');
+        this.props.actions.saveimage(b64[1]);
+        this.setState({
+            msg: 'Saved thumbnail to database.'
+        })
     }
 
     render() {
@@ -45,6 +45,7 @@ class TestDialog extends React.Component {
             <div>
                 <Dialog onClose={this.handleClose} {...other}>
                     <img id='target' src={ipcamsrc} alt='test ip cam' />
+                    <h4 className='Msg'>{this.state.msg}</h4>
                     <DialogActions>
                         <Button onClick={this.handleSaveImage}>Save Image</Button>
                         <Button color='secondary' onClick={this.handleClose}>Close</Button>
@@ -56,8 +57,7 @@ class TestDialog extends React.Component {
 };
 
 TestDialog.propTypes = {
-    onClose: PropTypes.func.isRequired,
-    // onSave: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

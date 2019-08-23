@@ -46,15 +46,11 @@ export function scanningip() {
     }
 }
 
-// export function saveimage(url) {
-//     var data = { 'url': url }
-//     return function(dispatch) {
-//         return sendimageurl(data)
-//         .catch((error) => {
-//             dispatch(commonAction.failure(error))
-//         })
-//     }
-// }
+export function saveimage(b64) {
+    return function(dispatch) {
+        dispatch(commonAction.saveimg(b64))
+    }
+}
 
 export function testurl(url) {
     var data = { 'url': url }

@@ -3,6 +3,7 @@ export const ADDCAM = 'ADDCAM';
 export const SCANIP = 'SCANIP';
 export const FAILURE = 'FAILURE';
 export const TEST_URL = 'TEST_URL';
+export const SAVE_IMG = 'SAVE_IMG';
 export const TEST_FAILURE = 'TEST_FAILURE';
 export const TEST_SUCCESS = 'TEST_SUCCESS';
 export const SCAN_SUCCESS = 'SCAN_SUCCESS';

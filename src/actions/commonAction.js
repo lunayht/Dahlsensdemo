@@ -1,4 +1,4 @@
-import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL, NEXT_N_SAVE } from '../constants/actionType';
+import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL, NEXT_N_SAVE, SAVE_IMG } from '../constants/actionType';
 
 export function normal() {
     return {
@@ -9,6 +9,13 @@ export function normal() {
 export function testfailure(data) {
     return {
         type: TEST_FAILURE,
+        data
+    }
+}
+
+export function saveimg(data) {
+    return {
+        type: SAVE_IMG,
         data
     }
 }
