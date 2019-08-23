@@ -3,26 +3,26 @@ import { saveimg } from '../../utils/httpUtil';
 // import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
 // import 'react-html5-camera-photo/build/css/index.css';
  
-var stream, imageCapture; 
-function toDataURL(src, callback, outputFormat) {
-    var img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function() {
-      var canvas = document.createElement('CANVAS');
-      var ctx = canvas.getContext('2d');
-      var dataURL;
-      canvas.height = this.naturalHeight;
-      canvas.width = this.naturalWidth;
-      ctx.drawImage(this, 0, 0);
-      dataURL = canvas.toDataURL(outputFormat);
-      callback(dataURL);
-    };
-    img.src = src;
-    if (img.complete || img.complete === undefined) {
-      img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-      img.src = src;
-    }
-  }
+// var stream, imageCapture; 
+// function toDataURL(src, callback, outputFormat) {
+//     var img = new Image();
+//     img.crossOrigin = 'Anonymous';
+//     img.onload = function() {
+//       var canvas = document.createElement('CANVAS');
+//       var ctx = canvas.getContext('2d');
+//       var dataURL;
+//       canvas.height = this.naturalHeight;
+//       canvas.width = this.naturalWidth;
+//       ctx.drawImage(this, 0, 0);
+//       dataURL = canvas.toDataURL(outputFormat);
+//       callback(dataURL);
+//     };
+//     img.src = src;
+//     if (img.complete || img.complete === undefined) {
+//       img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+//       img.src = src;
+//     }
+//   }
 
 
 class App extends Component {
@@ -30,28 +30,40 @@ class App extends Component {
 
     gotMedia(mediaStream) {
         console.log('getMedia')
+        var imggg = new Image();
+
+        imggg.setAttribute('crossOrigin','anonymous');
+        
         const img = document.getElementById('img')
-        img.setAttribute('crossOrigin', 'anonymous'); // works for me
-        // console.log(vid)
+        imggg.src = img.url
+//         img.setAttribute('crossOrigin', 'anonymous'); // works for me
+//         // console.log(vid)
         var c = document.createElement('canvas');
-// var img = document.getElementById('myImage');
+
+// // var img = document.getElementById('myImage');
 c.width = img.width;
 c.height = img.height;
 var ctx = c.getContext('2d');
 
+console.log(ctx)
+ctx.drawImage(imggg, 0, 0);
+var dataURL = c.toDataURL("image/png");
 
-ctx.drawImage(img, 0, 0);
-// window.open(c.toDataURL('image/png'))
-console.log(img)
-toDataURL(
-    img.src,
-    function(dataUrl) {
-      console.log('RESULT:', dataUrl)
-    }
-  )
-saveimg(
-    {'url': img.src, 'width': img.width, 'height': img.height}
-)
+        console.log(dataURL);
+// console.log(ctx)
+// toDataURL(
+//     img.src,
+//     function(dataUrl) {
+//       console.log('RESULT:', dataUrl)
+//     }
+//   )
+// var image = c.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+// window.location.href=image;
+// saveimg(
+//     {'url': img.src, 'width': img.width, 'height': img.height}
+// )
+// var data = c.toDataURL('image/png');
+// console.log(data)
     //     window.navigator.mediaDevices.getUserMedia({video: true})
     // .then(function(mediaStream)
     // { 
