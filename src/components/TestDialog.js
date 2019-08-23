@@ -17,7 +17,25 @@ class TestDialog extends React.Component {
     }
 
     handleSaveImage() {
-        this.props.actions.saveimage(this.props.state.activity.testurl)
+        var img = new Image();
+        img.crossOrigin = 'Anonymous';
+
+        const imgwh = document.getElementById('target');
+        img.src = imgwh.src;
+
+        img.onload = function() {
+            var canvas = document.createElement("canvas");
+            canvas.width = imgwh.width;
+            canvas.height = imgwh.height;
+    
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(this, 0, 0);
+            
+            const dataURL = canvas.toDataURL("image/png");
+            const b64 = dataURL.split(',');
+            console.log(b64[1]);
+        };
+        // this.props.actions.saveimage(this.props.state.activity.testurl)
     }
 
     render() {
@@ -26,7 +44,7 @@ class TestDialog extends React.Component {
         return(
             <div>
                 <Dialog onClose={this.handleClose} {...other}>
-                    <img src={ipcamsrc} alt='test ip cam' />
+                    <img id='target' src={ipcamsrc} alt='test ip cam' />
                     <DialogActions>
                         <Button onClick={this.handleSaveImage}>Save Image</Button>
                         <Button color='secondary' onClick={this.handleClose}>Close</Button>

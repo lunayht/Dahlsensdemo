@@ -30,11 +30,3 @@ export function sendurl(url) {
             console.log(err)
         });
 }
-
-export function saveimg(data) {
-    return axios   
-        .post(serveraddress + '/saveimg', data)
-        .catch((err) => {
-            console.log(err)
-        })
-}
