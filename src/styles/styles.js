@@ -4,11 +4,16 @@ const styles = {
         flexDirection: 'row',
         alignItems: 'center'
     },
+    flexGrow: {
+        width: '100%'
+    },
     logo: {
         width: 40,
         height: 40,
-        marginLeft: 20,
-        marginRight: 10
+        margin: '10px 10px 10px 10px'
+    },
+    headerbtn: {
+        
     },
     fab: {
         position: 'fixed',
