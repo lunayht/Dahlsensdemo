@@ -31,3 +31,15 @@ export function saveinfo(req, res) {
         error: err
     }))
 }
+
+export function queryinfo(req, res) {
+    Camera.fetchAll()
+    .then((resData) => {
+        // console.log(resData.serialize())
+        console.log('Query Data Done')
+        res.json({
+            query: true,
+            data: resData.serialize()
+        })
+    })
+}

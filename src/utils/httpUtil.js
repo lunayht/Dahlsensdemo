@@ -43,3 +43,11 @@ export function todatabase(data) {
             console.log(err);
         });
 }
+
+export function getinfo() {
+    return axios
+        .post(serveraddress + '/getall')
+        .catch((err) => {
+            console.log(err)
+        })
+}

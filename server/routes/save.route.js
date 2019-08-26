@@ -13,4 +13,9 @@ saveRoutes.route('/mysql')
         saveCtrl.saveinfo(req, res)
     })
 
+saveRoutes.route('/getall')
+    .post((req, res) => {
+        saveCtrl.queryinfo(req, res)
+    })
+
 export default saveRoutes;

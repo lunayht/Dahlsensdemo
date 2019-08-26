@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as crudAction from '../../actions/crudAction';
 import '../../styles/SaveCamMain.css';
 import styles from '../../styles/styles';
+import history from '../../utils/history';
 
 const style = {
     btnstyle: styles.nextbtn
@@ -34,7 +35,9 @@ class SaveCamMain extends React.Component {
         data['url'] = this.props.state.activity.finalurl
         data['b64img'] = this.props.state.activity.img
         this.props.actions.todatabase(data).then((data) => {
-            console.log(data)
+            if (data.data.save) {
+                history.push('/')
+            }
         })
     };
 
