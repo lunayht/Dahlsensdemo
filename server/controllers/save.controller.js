@@ -16,3 +16,10 @@ export function checkurl(req, res) {
         });
     })
 }
+
+export function saveinfo(req, res) {
+    console.log(req.body)
+    res.json({
+        savesuccess: true
+    })
+}

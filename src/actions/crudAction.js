@@ -1,4 +1,4 @@
-import { startscan, checkip, sendimageurl } from '../services/httpService';
+import { startscan, checkip, sendimageurl, sendtodatabase } from '../services/httpService';
 import * as commonAction from './commonAction';
 import history from '../utils/history';
 
@@ -73,5 +73,15 @@ export function back() {
     history.push('/addcam')
     return function(dispatch) {
         dispatch(commonAction.addcam())
+    }
+}
+
+export function todatabase(data) {
+    return function(dispatch) {
+        dispatch(commonAction.savetodatabase(data))
+        return sendtodatabase(data)
+        .catch((error) => {
+            dispatch(commonAction.failure(error))
+        })
     }
 }

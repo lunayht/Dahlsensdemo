@@ -30,13 +30,13 @@ const styles = {
         alignItems: 'center',
     },
     normbtn: {
-        marginLeft: 10,
-        marginRight: 10,
-        width: 80
+        marginLeft: 15,
+        marginRight: 15,
+        width: 90
     },
     nextbtn: {
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: 15,
+        marginRight: 15,
         width: 180
     }
 };

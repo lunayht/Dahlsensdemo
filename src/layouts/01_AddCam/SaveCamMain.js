@@ -13,8 +13,27 @@ const style = {
 class SaveCamMain extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            camTitle: '',
+            camNotes: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSave = this.handleSave.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.handleBack = this.handleBack.bind(this);
+    };
+
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    };
+
+    handleSave() {
+        var data = {}
+        data['Title'] = this.state.camTitle
+        data['Notes'] = this.state.camNotes
+        data['Url'] = this.props.state.activity.finalurl
+        data['Img'] = this.props.state.activity.img
+        this.props.actions.todatabase(data)
     };
 
     handleCancel() {
@@ -32,34 +51,37 @@ class SaveCamMain extends React.Component {
             <div className='Page'>
                 <h1 className='Addcam-Title'>Confirm Details</h1>
                 <div className='Div2'>
+                    <img className='Thumbnail' src={`data:image/jpg;base64, ${this.props.state.activity.img}`} alt='Camera Thumbnail' />
                     <div className='Display1'>
                         <TextField
+                            name='camTitle'
                             style={{minWidth: 350, margin: 2, marginBottom: 20}}
-                            // value={this.state.value}
+                            value={this.state.value}
                             variant='outlined'
                             label='Camera Title'
-                            // onChange={this.handleUpdateURL}
+                            onChange={this.handleChange}
                         />
                         <TextField
+                            name='camUrl'
                             style={{minWidth: 350, margin: 2, marginBottom: 20}}
                             value={this.props.state.activity.finalurl}
                             variant='outlined'
                             label='Camera URL'
-                            // onChange={this.handleUpdateURL}
+                            InputProps={{ readOnly: true }}
                         />
                         <TextField
-                            style={{minWidth: 350, margin: 2, marginBottom: 20}}
-                            // value={this.state.value}
+                            name='camNotes'
+                            style={{minWidth: 350, margin: 2}}
+                            value={this.state.value}
                             variant='outlined'
                             label='Notes'
-                            // onChange={this.handleUpdateURL}
+                            onChange={this.handleChange}
                         />
                     </div>
-                    <h4>Camera screenshot</h4>
                 </div>
                 <div className='Buttons'>
                     <Button className={classes.btnstyle} variant='contained' color='primary' onClick={this.handleBack}>back</Button>
-                    <Button className={classes.btnstyle} variant='contained' color='primary'>confirm and save</Button>
+                    <Button className={classes.btnstyle} variant='contained' color='primary' onClick={this.handleSave}>confirm and save</Button>
                     <Button className={classes.btnstyle} variant='contained' color='secondary' onClick={this.handleCancel}>cancel</Button>
                 </div>
             </div>

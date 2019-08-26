@@ -1,4 +1,4 @@
-import { scan, check, sendurl } from '../utils/httpUtil';
+import { scan, check, sendurl, todatabase } from '../utils/httpUtil';
 
 export function startscan(data) {
     return scan(data);
@@ -10,4 +10,8 @@ export function checkip() {
 
 export function sendimageurl(url) {
     return sendurl(url)
+}
+
+export function sendtodatabase(data) {
+    return todatabase(data)
 }

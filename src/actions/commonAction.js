@@ -1,4 +1,4 @@
-import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL, NEXT_N_SAVE, SAVE_IMG } from '../constants/actionType';
+import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE } from '../constants/actionType';
 
 export function normal() {
     return {
@@ -57,5 +57,12 @@ export function nextnsave(url) {
     return {
         type: NEXT_N_SAVE,
         url
+    }
+};
+
+export function savetodatabase(data) {
+    return {
+        type: SAVED_TO_DATABASE,
+        data
     }
 }

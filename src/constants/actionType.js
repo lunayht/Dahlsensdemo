@@ -8,3 +8,4 @@ export const TEST_FAILURE = 'TEST_FAILURE';
 export const TEST_SUCCESS = 'TEST_SUCCESS';
 export const SCAN_SUCCESS = 'SCAN_SUCCESS';
 export const NEXT_N_SAVE = 'NEXT_N_SAVE';
+export const SAVED_TO_DATABASE = 'SAVED_TO_DATABASE'

@@ -115,7 +115,7 @@ class IpScanForm extends React.Component {
                     />
                     <br />
                     <TextField
-                        style={{minWidth: 350, margin: 2, marginBottom: 20}}
+                        style={{minWidth: 450, margin: 2, marginBottom: 20}}
                         value={this.state.url}
                         // value={this.state.value}
                         variant='outlined'

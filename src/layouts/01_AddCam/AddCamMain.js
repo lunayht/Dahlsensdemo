@@ -23,15 +23,6 @@ class AddCamMain extends React.Component {
         this.handleClose = this.handleClose.bind(this);
     };
 
-    // componentDidMount() {
-	// 	this.props.actions.checkclientlocalip()
-	// 		.then(res => {
-	// 			this.setState({
-	// 				localip: res.data.localip
-	// 			})
-	// 		})
-	// };
-
     handleClose() {
         this.setState({
             test: false
@@ -40,16 +31,20 @@ class AddCamMain extends React.Component {
     
     submitForm(formProps) {
         if (this.props.state.activity.status === 'TESTURL') {
+            this.setState({
+                loading: true
+            })
             this.props.actions.testurl(this.props.state.activity.testurl).then(data => {
-                console.log(data.data)
                 if (!data.data.testsuccess) {
                     this.setState({
+                        loading: false,
                         warning: data.data.url + ' is an invalid URL. Please try again.'
                     })
                     store.dispatch(testfailure(data.data.url))
                     
                 } else {
                     this.setState({
+                        loading: false,
                         test: true,
                         warning: ''
                     })

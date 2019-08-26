@@ -30,3 +30,16 @@ export function sendurl(url) {
             console.log(err)
         });
 }
+
+export function todatabase(data) {
+    return axios
+        .post(serveraddress + '/mysql', data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}

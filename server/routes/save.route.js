@@ -8,4 +8,9 @@ saveRoutes.route('/imgurl')
         saveCtrl.checkurl(req, res)
     })
 
+saveRoutes.route('/mysql')
+    .post((req, res) => {
+        saveCtrl.saveinfo(req, res)
+    })
+
 export default saveRoutes;
