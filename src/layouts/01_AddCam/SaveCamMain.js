@@ -29,11 +29,13 @@ class SaveCamMain extends React.Component {
 
     handleSave() {
         var data = {}
-        data['Title'] = this.state.camTitle
-        data['Notes'] = this.state.camNotes
-        data['Url'] = this.props.state.activity.finalurl
-        data['Img'] = this.props.state.activity.img
-        this.props.actions.todatabase(data)
+        data['title'] = this.state.camTitle
+        data['notes'] = this.state.camNotes
+        data['url'] = this.props.state.activity.finalurl
+        data['b64img'] = this.props.state.activity.img
+        this.props.actions.todatabase(data).then((data) => {
+            console.log(data)
+        })
     };
 
     handleCancel() {

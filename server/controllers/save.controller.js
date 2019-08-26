@@ -1,3 +1,6 @@
+import HttpStatus from 'http-status-codes';
+import Camera from '../models/camera.model';
+
 var http = require('http')
 
 export function checkurl(req, res) {
@@ -18,8 +21,13 @@ export function checkurl(req, res) {
 }
 
 export function saveinfo(req, res) {
-    console.log(req.body)
-    res.json({
-        savesuccess: true
-    })
+    const { b64img, title, notes, url } = req.body;
+    Camera.forge({b64img, title, notes, url}).save()
+    .then(camera => res.json({
+        save: true,
+        data: camera.toJSON()
+    }))
+    .catch(err => res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        error: err
+    }))
 }

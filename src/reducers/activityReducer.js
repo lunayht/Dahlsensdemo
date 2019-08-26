@@ -55,9 +55,9 @@ export default function(state, action) {
         case SAVED_TO_DATABASE:
             return Object.assign({}, state, {
                 status: 'SAVED_TO_DATABASE',
-                img: action.data.Img,
-                title: action.data.Title,
-                notes: action.data.Notes
+                img: action.data.b64img,
+                title: action.data.title,
+                notes: action.data.notes
             })
 
         default:
