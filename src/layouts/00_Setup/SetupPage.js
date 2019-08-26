@@ -42,7 +42,8 @@ class SetupPage extends React.Component {
 
         return(
             <div>
-                <div className='content'>
+                <h2 className='Addcam-Title'>Setup Cameras</h2>
+                <div>
                     <div className='row'>
                         {this.state.cards.map(el =>
                             <div key={el.id} className="col-3 col-s-12">
