@@ -3,7 +3,7 @@ import { Fab, withStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import styles from '../../styles/styles';
 import CamCard from '../../components/CamCard';
-import '../../styles/MainPage.css';
+import '../../styles/SetupPage.css';
 import * as crudAction from '../../actions/crudAction';
 import store from '../../store/store';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ const style = {
     fab: styles.fab,
 }
 
-class MainPage extends React.Component {
+class SetupPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -67,4 +67,4 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(style)(MainPage));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(style)(SetupPage));
