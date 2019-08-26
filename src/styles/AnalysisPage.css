@@ -1,0 +1,39 @@
+.Heading {
+    margin: 15px 15px 0px 15px
+}
+
+.Info {
+    margin: 10px;
+    margin-right: 0px
+}
+
+.btntext {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: green
+}
+
+#station {
+    width: 100%
+}
+
+#station td, #station th {
+    border: 1px solid #ddd;
+    padding: 8px
+}
+
+#station tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+#station tr:hover {
+    background-color: #ddd
+}
+
+#station th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: lightblue;
+    color: black
+}

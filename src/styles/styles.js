@@ -5,15 +5,16 @@ const styles = {
         alignItems: 'center'
     },
     flexGrow: {
-        width: '100%'
+        flexGrow: 1
     },
     logo: {
         width: 40,
         height: 40,
-        margin: '10px 10px 10px 10px'
+        margin: '10px 10px 10px 10px',
+        // flexGrow: 1
     },
     headerbtn: {
-        
+        float: 'right'
     },
     fab: {
         position: 'fixed',
