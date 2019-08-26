@@ -4,7 +4,7 @@ import { Dialog, DialogActions, Button } from '@material-ui/core';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
-import '../styles/TestDialog.css'
+import '../styles/Dialog.css'
 
 class TestDialog extends React.Component {
     constructor(props) {

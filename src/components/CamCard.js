@@ -3,6 +3,7 @@ import { Card, withStyles, CardMedia, CardActionArea, CardContent, Typography } 
 import classNames from 'classnames';
 import styles from '../styles/styles';
 import { checkcard } from '../utils/httpUtil';
+import DisplayDialog from './DisplayDialog';
 
 const style = {
     camcard: styles.camcard,
@@ -10,6 +11,27 @@ const style = {
 };
 
 class CamCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dialog: false,
+            img: '',
+            title: '',
+            url: '',
+            notes: ''
+        };
+        this.handleClose = this.handleClose.bind(this);
+    };
+
+    handleClose() {
+        this.setState({
+            dialog: false,
+            img: '',
+            title: '',
+            url: '',
+            notes: ''
+        })
+    };
 
     render() {
         const { children, custom, classes, className, img, Title, Description } = this.props;
@@ -23,6 +45,13 @@ class CamCard extends React.Component {
                         var imgstring = img.split(',');
                         checkcard({b64img: imgstring[1]}).then((resData) => {
                             console.log(resData.data.data.notes)
+                            this.setState({ 
+                                dialog: true,
+                                img: resData.data.data.b64img,
+                                title: resData.data.data.title,
+                                url: resData.data.data.url,
+                                notes: resData.data.data.notes
+                            })
                         });
                         }}
                     >
@@ -38,6 +67,8 @@ class CamCard extends React.Component {
                     </CardActionArea>
                     {children}
                 </Card>
+                <DisplayDialog open={this.state.dialog} imgsrc={this.state.img} Title={this.state.title} 
+                Notes={this.state.notes} Url={this.state.url} onClose={this.handleClose} />
             </div>
         )
     }
