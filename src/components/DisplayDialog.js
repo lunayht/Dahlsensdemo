@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dialog, DialogActions, Button } from '@material-ui/core';
+import { Dialog, DialogActions, Button, DialogTitle, DialogContent, DialogContentText } from '@material-ui/core';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
@@ -17,15 +17,15 @@ class DisplayDialog extends React.Component {
     }
 
     render() {
-        const { imgsrc, Title, Notes, Url, onClose, ...other} = this.props
+        const { imgsrc, Title, Notes, Url, classes, onClose, ...other} = this.props
 
         return(
             <div>
                 <Dialog onClose={this.handleClose} {...other}>
+                    <DialogTitle>{Title.toUpperCase()}</DialogTitle>
                     <img className='Img' src={`data:image/jpg;base64,${imgsrc}`} alt='test ip cam' />
-                    <h4>{Title}</h4>
-                    <h4>{Url}</h4>
-                    <h4>{Notes}</h4>
+                    <h4 className='displayDes'>{Url}</h4>
+                    <h4 className='displayDes'>{Notes}</h4>
                     <DialogActions>
                         <Button color='secondary' onClick={this.handleClose}>Close</Button>
                     </DialogActions>

@@ -5,5 +5,9 @@
 }
 
 .Img {
-    max-width: 500px;
+    width: 500px;
+}
+
+.displayDes {
+    margin: 0px 10px 0px 10px
 }
