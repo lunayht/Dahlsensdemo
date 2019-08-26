@@ -46,7 +46,7 @@ class MainPage extends React.Component {
                     <div className='row'>
                         {this.state.cards.map(el =>
                             <div key={el.id} className="col-3 col-s-12">
-                                <CamCard img={`data:image/jpg;base64, ${el.b64img}`} Title={el.title} Description={el.notes}/>
+                                <CamCard img={`data:image/jpg;base64,${el.b64img}`} Title={el.title} Description={el.notes}/>
                             </div>
                             )}
                     </div>

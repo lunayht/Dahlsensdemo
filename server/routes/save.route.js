@@ -18,4 +18,9 @@ saveRoutes.route('/getall')
         saveCtrl.queryinfo(req, res)
     })
 
+saveRoutes.route('/getone')
+    .post((req, res) => {
+        saveCtrl.queryone(req, res)
+    })
+
 export default saveRoutes;

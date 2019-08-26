@@ -51,3 +51,11 @@ export function getinfo() {
             console.log(err)
         })
 }
+
+export function checkcard(img) {
+    return axios   
+        .post(serveraddress + '/getone', img)
+        .catch((err) => {
+            console.log(err)
+        })
+}

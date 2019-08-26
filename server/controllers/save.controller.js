@@ -36,7 +36,20 @@ export function queryinfo(req, res) {
     Camera.fetchAll()
     .then((resData) => {
         // console.log(resData.serialize())
-        console.log('Query Data Done')
+        console.log('Query All Data Done.')
+        res.json({
+            query: true,
+            data: resData.serialize()
+        })
+    })
+}
+
+export function queryone(req, res) {
+    const { b64img } = req.body;
+    Camera.query({
+        where: { b64img: b64img },
+    }).fetch().then((resData) => {
+        console.log('Query Single Data Done.')
         res.json({
             query: true,
             data: resData.serialize()
