@@ -44,7 +44,10 @@ const styles = {
         marginLeft: 15,
         marginRight: 15,
         width: 180
-    }
+    },
+    displayDes: {
+        margin: 15
+    },
 };
 
 export default styles;
