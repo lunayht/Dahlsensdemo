@@ -1,4 +1,4 @@
-import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, SETUP, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE, MONITOR, REDIRECT_TO_MONITOR } from '../constants/actionType';
+import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, SETUP, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE, MONITOR, REDIRECT_TO_MONITOR, DISPLAYIMG } from '../constants/actionType';
 
 export function setup() {
     return {
@@ -13,16 +13,16 @@ export function testfailure(data) {
     }
 }
 
-export function saveimg(data) {
+export function testsuccess(data) {
     return {
-        type: SAVE_IMG,
+        type: TEST_SUCCESS,
         data
     }
 }
 
-export function testsuccess(data) {
+export function saveimg(data) {
     return {
-        type: TEST_SUCCESS,
+        type: SAVE_IMG,
         data
     }
 }
@@ -79,3 +79,10 @@ export function redirecttomonitor(data) {
         data
     }
 };
+
+export function displayimg(data) {
+    return {
+        type: DISPLAYIMG,
+        data
+    }
+}

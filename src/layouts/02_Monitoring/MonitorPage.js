@@ -77,6 +77,7 @@ class MonitorPage extends React.Component{
                                     </div>,
                                     menu: false
                                 })
+                                this.props.actions.displayimg(el.b64img, el.title)
                             }}>
                             {el.title}
                             </MenuItem>

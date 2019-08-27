@@ -101,3 +101,12 @@ export function redirecttomonitor(imgsrc, title) {
     history.push('/monitor')
     store.dispatch(commonAction.redirecttomonitor(data))
 } 
+
+export function displayimg(b64img, title) {
+    var data = {}
+    data['b64img'] = b64img
+    data['title'] = title
+    return function(dispatch) {
+        dispatch(commonAction.displayimg(data))
+    }
+}

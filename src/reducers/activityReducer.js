@@ -1,4 +1,4 @@
-import { ADDCAM, SETUP, TEST_URL, SCANIP, TEST_FAILURE, TEST_SUCCESS, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE, MONITOR, REDIRECT_TO_MONITOR } from "../constants/actionType";
+import { ADDCAM, SETUP, TEST_URL, SCANIP, TEST_FAILURE, TEST_SUCCESS, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE, MONITOR, REDIRECT_TO_MONITOR, DISPLAYIMG } from "../constants/actionType";
 
 var initialState = {
     status: 'SETUP',
@@ -73,6 +73,12 @@ export default function(state, action) {
             return Object.assign({}, state, {
                 status: 'REDIRECT_TO_MONITOR',
                 imgnow: action.data.src,
+                titlenow: action.data.title
+            })
+
+        case DISPLAYIMG:
+            return Object.assign({}, state, {
+                imgnow: action.data.b64img,
                 titlenow: action.data.title
             })
 
