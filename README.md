@@ -13,7 +13,7 @@ Before this, please create a user and database in mysql based on the following i
 - `database: 'dahlsens'` 
 
 Edit `server/config/database.js` for different usecase. <br>
-Useful link: [Create User and Database](https://www.a2hosting.sg/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line) , [Reset password using ALTER command MySQL 5.7.6 or later](https://stackoverflow.com/questions/33467337/reset-mysql-root-password-using-alter-user-statement-after-install-on-mac) <br>
+Useful link: [Install MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/), [Create User and Database](https://www.a2hosting.sg/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line) , [Reset password using ALTER command MySQL 5.7.6 or later](https://stackoverflow.com/questions/33467337/reset-mysql-root-password-using-alter-user-statement-after-install-on-mac) <br>
 
 After migrations,please log in to your mysql user and change the data type of b64img under table cameras to LONGTEXT: 
 - `mysql -u lauretta -p`
