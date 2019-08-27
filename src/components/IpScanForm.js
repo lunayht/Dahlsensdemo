@@ -62,7 +62,7 @@ class IpScanForm extends React.Component {
     };
 
     handleCancel() {
-        this.props.actions.normal()
+        this.props.actions.setup()
     };
   
     render() {

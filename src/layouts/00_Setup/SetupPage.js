@@ -5,10 +5,8 @@ import styles from '../../styles/styles';
 import CamCard from '../../components/CamCard';
 import '../../styles/SetupPage.css';
 import * as crudAction from '../../actions/crudAction';
-import store from '../../store/store';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { normal } from '../../actions/commonAction';
 import { getinfo } from '../../utils/httpUtil';
 
 const style = {
@@ -25,7 +23,7 @@ class SetupPage extends React.Component {
     };
 
     componentDidMount() {
-        store.dispatch(normal())
+        this.props.actions.setup()
         getinfo()
         .then((data) => {
             var cardsArr = data.data.data

@@ -2,11 +2,15 @@ import React from 'react';
 import { getinfo } from '../../utils/httpUtil';
 import { Button, Menu, MenuItem } from '@material-ui/core';
 import graph from './image.png';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as crudAction from '../../actions/crudAction';
 
 class MonitorPage extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            img64: <div></div>,
             title: [],
             menu: false,
             anchorEl: null
@@ -35,6 +39,14 @@ class MonitorPage extends React.Component{
         .then((data) => {
             this.setState({ title: data.data.data })
         })
+        if (this.props.state.activity.status === 'REDIRECT_TO_MONITOR') {
+            this.setState({
+                img64: <div>
+                    <img className='Display-img' src={`data:image/jpg;base64,${this.props.state.activity.img}`} alt='thumbnail' />
+                    <h4 className='Small-title'>{this.props.state.activity.title}</h4>
+                </div>
+            })
+        }
     };
 
     render() {
@@ -112,4 +124,12 @@ class MonitorPage extends React.Component{
     }
 };
 
-export default MonitorPage;
+function mapStateToProps(state) {
+    return { state }
+};
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MonitorPage);

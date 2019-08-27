@@ -1,8 +1,8 @@
-import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, NORMAL, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE } from '../constants/actionType';
+import { FAILURE, ADDCAM, TEST_URL, SCANIP, TEST_SUCCESS, TEST_FAILURE, SETUP, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE, MONITOR, REDIRECT_TO_MONITOR } from '../constants/actionType';
 
-export function normal() {
+export function setup() {
     return {
-        type: NORMAL
+        type: SETUP
     }
 }
 
@@ -65,4 +65,17 @@ export function savetodatabase(data) {
         type: SAVED_TO_DATABASE,
         data
     }
+};
+
+export function monitor() {
+    return {
+        type: MONITOR
+    }
 }
+
+export function redirecttomonitor(data) {
+    return {
+        type: REDIRECT_TO_MONITOR,
+        data
+    }
+};

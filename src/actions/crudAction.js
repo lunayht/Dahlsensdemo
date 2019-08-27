@@ -1,11 +1,19 @@
-import { startscan, checkip, sendimageurl, sendtodatabase } from '../services/httpService';
+import { startscan, sendimageurl, sendtodatabase } from '../services/httpService';
 import * as commonAction from './commonAction';
 import history from '../utils/history';
+import store from '../store/store';
 
-export function normal() {
+export function setup() {
     history.push('/')
     return function(dispatch) {
-        dispatch(commonAction.normal())
+        dispatch(commonAction.setup())
+    }
+}
+
+export function monitor() {
+    history.push('/monitor')
+    return function(dispatch) {
+        dispatch(commonAction.monitor())
     }
 }
 
@@ -18,14 +26,14 @@ export function clickscan(data) {
     }
 }
 
-export function checkclientlocalip() {
-    return function(dispatch) {
-        return checkip()
-        .catch((error) => {
-            dispatch(commonAction.failure(error))
-        })
-    }   
-}
+// export function checkclientlocalip() {
+//     return function(dispatch) {
+//         return checkip()
+//         .catch((error) => {
+//             dispatch(commonAction.failure(error))
+//         })
+//     }   
+// }
 
 export function addingcam() {
     history.push('/addcam')
@@ -85,3 +93,11 @@ export function todatabase(data) {
         })
     }
 }
+
+export function redirecttomonitor(imgsrc, title) {
+    var data = {}
+    data['src'] = imgsrc
+    data['title'] = title
+    history.push('/monitor')
+    store.dispatch(commonAction.redirecttomonitor(data))
+} 

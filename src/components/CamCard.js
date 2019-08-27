@@ -44,7 +44,7 @@ class CamCard extends React.Component {
                     onClick={() => {
                         var imgstring = img.split(',');
                         checkcard({b64img: imgstring[1]}).then((resData) => {
-                            console.log(resData.data.data.notes)
+                            // console.log(resData.data.data.notes)
                             this.setState({ 
                                 dialog: true,
                                 img: resData.data.data.b64img,

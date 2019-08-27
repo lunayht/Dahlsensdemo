@@ -42,7 +42,7 @@ class SaveCamMain extends React.Component {
     };
 
     handleCancel() {
-        this.props.actions.normal()
+        this.props.actions.setup()
     };
 
     handleBack() {

@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
 import '../styles/Dialog.css';
 
+function handleRedirect(imgsrc, title) {
+    crudAction.redirecttomonitor(imgsrc, title)
+};
+
 class DisplayDialog extends React.Component {
     constructor(props) {
         super(props);
@@ -27,6 +31,9 @@ class DisplayDialog extends React.Component {
                     <h4 className='displayDes'>{Url}</h4>
                     <h4 className='displayDes'>{Notes}</h4>
                     <DialogActions>
+                        <Button color='primary' onClick={() => {
+                            handleRedirect(imgsrc, Title)
+                        }}>Monitor</Button>
                         <Button color='secondary' onClick={this.handleClose}>Close</Button>
                     </DialogActions>
                 </Dialog>
@@ -39,8 +46,12 @@ DisplayDialog.propTypes = {
     onClose: PropTypes.func.isRequired
 };
 
+function mapStateToProps(state) {
+    return { state }
+};
+
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(DisplayDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayDialog);
