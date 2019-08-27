@@ -1,7 +1,9 @@
 import { ADDCAM, SETUP, TEST_URL, SCANIP, TEST_FAILURE, TEST_SUCCESS, NEXT_N_SAVE, SAVE_IMG, SAVED_TO_DATABASE, MONITOR, REDIRECT_TO_MONITOR } from "../constants/actionType";
 
 var initialState = {
-    status: 'SETUP'
+    status: 'SETUP',
+    imgnow: '',
+    titlenow: ''
 }
 
 export default function(state, action) {
@@ -9,7 +11,9 @@ export default function(state, action) {
 
     switch (action.type) {
         case SETUP:
-            return Object.assign({}, initialState)
+            return Object.assign({}, state, {
+                status: 'SETUP'
+            })
 
         case MONITOR:
             return Object.assign({}, state, {
@@ -68,8 +72,8 @@ export default function(state, action) {
         case REDIRECT_TO_MONITOR:
             return Object.assign({}, state, {
                 status: 'REDIRECT_TO_MONITOR',
-                img: action.data.src,
-                title: action.data.title
+                imgnow: action.data.src,
+                titlenow: action.data.title
             })
 
         default:

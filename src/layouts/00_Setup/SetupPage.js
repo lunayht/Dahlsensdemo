@@ -23,7 +23,6 @@ class SetupPage extends React.Component {
     };
 
     componentDidMount() {
-        this.props.actions.setup()
         getinfo()
         .then((data) => {
             var cardsArr = data.data.data

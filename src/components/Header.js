@@ -3,6 +3,8 @@ import { AppBar, withStyles, Button } from '@material-ui/core';
 import logo from './lauretta-logo.png';
 import styles from '../styles/styles';
 import history from '../utils/history';
+import store from '../store/store';
+import { monitor, setup } from '../actions/commonAction';
 
 const style = {
     appbar: styles.appbar,
@@ -25,10 +27,12 @@ class Header extends React.Component {
 
     handleMonitor() {
         history.push('/monitor')
+        store.dispatch(monitor())
     };
 
     handleSetup() {
         history.push('/')
+        store.dispatch(setup())
     }
 
     render() {

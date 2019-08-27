@@ -42,8 +42,15 @@ class MonitorPage extends React.Component{
         if (this.props.state.activity.status === 'REDIRECT_TO_MONITOR') {
             this.setState({
                 img64: <div>
-                    <img className='Display-img' src={`data:image/jpg;base64,${this.props.state.activity.img}`} alt='thumbnail' />
-                    <h4 className='Small-title'>{this.props.state.activity.title}</h4>
+                    <img className='Display-img' src={`data:image/jpg;base64,${this.props.state.activity.imgnow}`} alt='thumbnail' />
+                    <h4 className='Small-title'>{this.props.state.activity.titlenow}</h4>
+                </div>
+            })
+        } else if (this.props.state.activity.imgnow !== '') {
+            this.setState({
+                img64: <div>
+                    <img className='Display-img' src={`data:image/jpg;base64,${this.props.state.activity.imgnow}`} alt='thumbnail' />
+                    <h4 className='Small-title'>{this.props.state.activity.titlenow}</h4>
                 </div>
             })
         }
