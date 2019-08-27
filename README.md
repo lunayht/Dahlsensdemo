@@ -17,8 +17,8 @@ Useful link: [Create User and Database](https://www.a2hosting.sg/kb/developer-co
 
 After migrations,please log in to your mysql user and change the data type of b64img under table cameras to LONGTEXT: 
 - `mysql -u lauretta -p`
-- `use dahlsens`
-- `ALTER TABLE 'cameras' MODIFY 'b64img' LONGTEXT`
+- `use dahlsens;`
+- `ALTER TABLE 'cameras' MODIFY 'b64img' LONGTEXT;`
 - `quit`
 
 ### `npm run dev`
