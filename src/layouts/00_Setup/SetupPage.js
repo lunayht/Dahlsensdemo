@@ -23,6 +23,7 @@ class SetupPage extends React.Component {
     };
 
     componentDidMount() {
+        // query data from mysql
         getinfo()
         .then((data) => {
             var cardsArr = data.data.data
@@ -57,12 +58,8 @@ class SetupPage extends React.Component {
     }
 };
 
-function mapStateToProps(state) {
-    return { state }
-};
-
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, crudAction), dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(style)(SetupPage));
+export default connect(null, mapDispatchToProps)(withStyles(style)(SetupPage));
