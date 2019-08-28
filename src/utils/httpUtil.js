@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const serveraddress = 'http://localhost:5000'
+const SERVERADDRESS = 'http://localhost:5000'
 
 export function scan(data) {
     return axios
-        .post(serveraddress + '/scan', data, {
+        .post(SERVERADDRESS + '/scan', data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -17,7 +17,7 @@ export function scan(data) {
 
 export function check() {
     return axios
-        .get(serveraddress + '/localip')
+        .get(SERVERADDRESS + '/localip')
         .catch((err) => {
             console.log(err)
         })
@@ -25,7 +25,7 @@ export function check() {
 
 export function sendurl(url) {
     return axios
-        .post(serveraddress + '/imgurl', url)
+        .post(SERVERADDRESS + '/imgurl', url)
         .catch((err) => {
             console.log(err)
         });
@@ -33,7 +33,7 @@ export function sendurl(url) {
 
 export function todatabase(data) {
     return axios
-        .post(serveraddress + '/mysql', data, {
+        .post(SERVERADDRESS + '/mysql', data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -46,7 +46,7 @@ export function todatabase(data) {
 
 export function getinfo() {
     return axios
-        .post(serveraddress + '/getall')
+        .post(SERVERADDRESS + '/getall')
         .catch((err) => {
             console.log(err)
         })
@@ -54,7 +54,7 @@ export function getinfo() {
 
 export function checkcard(img) {
     return axios   
-        .post(serveraddress + '/getone', img)
+        .post(SERVERADDRESS + '/getone', img)
         .catch((err) => {
             console.log(err)
         })
