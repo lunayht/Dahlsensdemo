@@ -27,19 +27,19 @@ export default function(state, action) {
         
         case TEST_URL:
             return Object.assign({}, state, {
-                status: 'TESTURL',
+                status: 'TEST URL',
                 testurl: action.data
             })
 
         case TEST_FAILURE:
             return Object.assign({}, state, {
-                status: 'TEST_FAILED',
+                status: 'TEST FAILED',
                 failedurl: action.data
             })
 
         case TEST_SUCCESS:
             return Object.assign({}, state, {
-                status: 'TEST_SUCCESS',
+                status: 'TEST SUCCESS',
                 validurl: action.data
             })
 
@@ -50,12 +50,12 @@ export default function(state, action) {
         
         case SCANIP:
             return Object.assign({}, state, {
-                status: 'SCANIP'
+                status: 'SCAN IP'
             })
 
         case NEXT_N_SAVE: 
             return Object.assign({}, state, {
-                status: 'NEXT_N_SAVE',
+                status: 'NEXT N SAVE',
                 finalurl: action.url,
                 testurl: '',
                 validurl: ''
@@ -63,7 +63,7 @@ export default function(state, action) {
         
         case SAVED_TO_DATABASE:
             return Object.assign({}, state, {
-                status: 'SAVED_TO_DATABASE',
+                status: 'SAVED TO DATABASE',
                 img: action.data.b64img,
                 title: action.data.title,
                 notes: action.data.notes
@@ -71,7 +71,7 @@ export default function(state, action) {
 
         case REDIRECT_TO_MONITOR:
             return Object.assign({}, state, {
-                status: 'REDIRECT_TO_MONITOR',
+                status: 'REDIRECT TO MONITOR',
                 imgnow: action.data.src,
                 titlenow: action.data.title
             })

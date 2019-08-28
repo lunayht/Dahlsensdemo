@@ -39,7 +39,7 @@ class MonitorPage extends React.Component{
         .then((data) => {
             this.setState({ title: data.data.data })
         })
-        if (this.props.state.activity.status === 'REDIRECT_TO_MONITOR') {
+        if (this.props.state.activity.status === 'REDIRECT TO MONITOR') {
             this.setState({
                 img64: <div>
                     <img className='Display-img' src={`data:image/jpg;base64,${this.props.state.activity.imgnow}`} alt='thumbnail' />

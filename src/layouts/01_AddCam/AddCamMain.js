@@ -29,7 +29,7 @@ class AddCamMain extends React.Component {
     };
     
     submitForm(formProps) {
-        if (this.props.state.activity.status === 'TESTURL') {
+        if (this.props.state.activity.status === 'TEST URL') {
             this.setState({
                 loading: true,
                 scanresult: '',
@@ -53,7 +53,7 @@ class AddCamMain extends React.Component {
                     store.dispatch(testsuccess(data.data.url))
                 }
             })
-        } else if (this.props.state.activity.status === 'SCANIP') {
+        } else if (this.props.state.activity.status === 'SCAN IP') {
             this.setState({
                 loading: true,
                 scanresult: '',
