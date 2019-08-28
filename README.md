@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is built on MERN stack, was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). ([MySQL](https://dev.mysql.com/downloads/): database, [Express](https://expressjs.com/): web framework for NodeJS, [React](https://reactjs.org/): JS library for UI, [NodeJS](https://nodejs.org/en/): server/back end) 
 
 ## Available Scripts
 
