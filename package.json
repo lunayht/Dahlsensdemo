@@ -1,7 +1,7 @@
 {
   "name": "dashboardpipe",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
@@ -21,7 +21,6 @@
     "concurrently": "^4.1.0",
     "connected-react-router": "^6.5.2",
     "cors": "^2.8.5",
-    "dbip": "^1.0.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "helmet": "^3.20.0",
