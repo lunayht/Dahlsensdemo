@@ -68,10 +68,3 @@ export function scanresult(req, res) {
         res.json(data)
     }, 10000);
 }
-
-export function getlocalip(req, res) {
-    res.json({
-        sent: true,
-        localip: ipAdd
-    });
-}

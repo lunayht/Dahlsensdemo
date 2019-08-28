@@ -8,9 +8,4 @@ scanRoutes.route('/scan')
         scanCtrl.scanresult(req, res)
     })
 
-scanRoutes.route('/localip')
-    .get((req, res) => {
-        scanCtrl.getlocalip(req, res)
-    })
-
 export default scanRoutes;

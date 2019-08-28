@@ -13,7 +13,6 @@ class AddCamMain extends React.Component {
     constructor(props) {
 		super(props);
 		this.state ={
-            localip: null,
             loading: false,
             test: false,
             scanresult: '',
@@ -32,17 +31,20 @@ class AddCamMain extends React.Component {
     submitForm(formProps) {
         if (this.props.state.activity.status === 'TESTURL') {
             this.setState({
-                loading: true
+                loading: true,
+                scanresult: '',
+                warning: ''
             })
             this.props.actions.testurl(this.props.state.activity.testurl).then(data => {
                 if (!data.data.testsuccess) {
+                    // failed result
                     this.setState({
                         loading: false,
                         warning: data.data.url + ' is an invalid URL. Please try again.'
                     })
                     store.dispatch(testfailure(data.data.url))
-                    
                 } else {
+                    // success result
                     this.setState({
                         loading: false,
                         test: true,
@@ -64,11 +66,13 @@ class AddCamMain extends React.Component {
                 var dataArray = data.data.response;
                 if (dataArray.length === 0) {
                     this.setState({
-                        scanresult: 'No available ports found.'
+                        scanresult: 'No available ports found.',
+                        warning: ''
                     })
                 } else {
                     this.setState({
-                        scanresult: 'Scan Results: ' + dataArray
+                        scanresult: 'Scan Results: ' + dataArray,
+                        warning: ''
                     })
                 }
             });
@@ -81,7 +85,6 @@ class AddCamMain extends React.Component {
         return(
             <div className='Page'>
                 <h1 className='Addcam-Title'>Add IP Camera</h1>
-                {/* <p>Your local IP address is {this.state.localip}</p> */}
                 <h3 className='Addcam-Title'>Please enter your camera details: </h3>
                 <div className='Addcam-Form'>
                     <IpScanForm onSubmit={this.submitForm}/>
