@@ -8,7 +8,8 @@ import '../styles/Dialog.css';
 import styles from '../styles/styles';
 
 const style = {
-    displayDes: styles.displayDes
+    displayDes: styles.displayDes,
+    dialog: styles.dialog
 }
 
 function handleRedirect(imgsrc, title) {
@@ -50,14 +51,16 @@ class DisplayDialog extends React.Component {
 
         return(
             <div>
-                <Dialog onClose={this.handleClose} {...other}>
+                <Dialog className={classes.dialog} onClose={this.handleClose} {...other}>
                     <DialogTitle>
                         {(this.state.edit) ? <TextField defaultValue={Title.toUpperCase()} /> : <Typography variant='inherit'>{Title.toUpperCase()}</Typography>}
                     </DialogTitle>
                     <img className='Img' src={`data:image/jpg;base64,${imgsrc}`} alt='test ip cam' />
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue={Url} /> : <Typography className={classes.displayDes} variant='inherit'>{Url}</Typography>}
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue={Notes} /> : <Typography className={classes.displayDes} variant='inherit'>{Notes}</Typography>}
+                    {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue='Py file here' /> : <Typography className={classes.displayDes} variant='inherit'>'py file'</Typography>}
                     <DialogActions>
+                        <Button color='primary'>Configure</Button>
                         <Button color='primary' onClick={() => {
                             handleRedirect(imgsrc, Title)
                         }}>Monitor</Button>

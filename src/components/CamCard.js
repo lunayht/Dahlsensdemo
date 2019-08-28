@@ -4,10 +4,12 @@ import classNames from 'classnames';
 import styles from '../styles/styles';
 import { checkcard } from '../utils/httpUtil';
 import DisplayDialog from './DisplayDialog';
+import DoneIcon from '@material-ui/icons/Done';
 
 const style = {
     camcard: styles.camcard,
     cardimg: styles.cardimg,
+    doneicon: styles.doneicon
 };
 
 class CamCard extends React.Component {
@@ -57,14 +59,21 @@ class CamCard extends React.Component {
                     >
                         <CardMedia className={classes.cardimg} image={img} />
                         <CardContent>
-                            <Typography gutterBottom variant='h5' component='h2'>
-                                {Title}
-                            </Typography>
-                            <Typography variant='body2' color='textSecondary' component='p'>
-                                {Description}
-                            </Typography>
+                            <div className='Div2'>
+                                <div className='Div-CamCard'>
+                                <Typography gutterBottom variant='h5' component='h2'>
+                                    {Title}
+                                </Typography>
+                                <Typography variant='body2' color='textSecondary' component='p'>
+                                    {Description}
+                                </Typography>
+                                </div>
+                                <DoneIcon className={classes.doneicon} />
+                            </div>
+                            
                         </CardContent>
                     </CardActionArea>
+                    
                     {children}
                 </Card>
                 <DisplayDialog open={this.state.dialog} imgsrc={this.state.img} Title={this.state.title} 

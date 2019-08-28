@@ -13,6 +13,12 @@ const styles = {
         margin: '10px 10px 10px 10px',
         // flexGrow: 1
     },
+    dialog: {
+        minWidth: 450
+    },
+    doneicon: {
+        color: 'green'
+    },
     headerbtn: {
         float: 'right'
     },
