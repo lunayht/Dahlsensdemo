@@ -6,10 +6,17 @@ import { connect } from 'react-redux';
 import * as crudAction from '../actions/crudAction';
 import '../styles/Dialog.css';
 import styles from '../styles/styles';
+import { configure } from '../utils/httpUtil';
 
 const style = {
     displayDes: styles.displayDes,
     dialog: styles.dialog
+};
+
+function handleConfigure(Url) {
+    var data = {}
+    data['url'] = Url
+    configure(data)
 }
 
 function handleRedirect(imgsrc, title) {
@@ -60,7 +67,9 @@ class DisplayDialog extends React.Component {
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue={Notes} /> : <Typography className={classes.displayDes} variant='inherit'>{Notes}</Typography>}
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue='Py file here' /> : <Typography className={classes.displayDes} variant='inherit'>'py file'</Typography>}
                     <DialogActions>
-                        <Button color='primary'>Configure</Button>
+                        <Button color='primary' onClick={() => {
+                            handleConfigure(Url)
+                        }}>Configure</Button>
                         <Button color='primary' onClick={() => {
                             handleRedirect(imgsrc, Title)
                         }}>Monitor</Button>

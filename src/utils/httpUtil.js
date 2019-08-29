@@ -59,3 +59,11 @@ export function checkcard(img) {
             console.log(err)
         })
 }
+
+export function configure(url) {
+    return axios
+        .post(SERVERADDRESS + '/config', url)
+        .catch((err) => {
+            console.log(err)
+        })
+}
