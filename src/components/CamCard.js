@@ -31,7 +31,8 @@ class CamCard extends React.Component {
             img: '',
             title: '',
             url: '',
-            notes: ''
+            notes: '',
+            id: ''
         })
     };
 
@@ -52,7 +53,8 @@ class CamCard extends React.Component {
                                 img: resData.data.data.b64img,
                                 title: resData.data.data.title,
                                 url: resData.data.data.url,
-                                notes: resData.data.data.notes
+                                notes: resData.data.data.notes,
+                                id: resData.data.data.id
                             })
                         });
                         }}
@@ -76,8 +78,8 @@ class CamCard extends React.Component {
                     
                     {children}
                 </Card>
-                <DisplayDialog open={this.state.dialog} imgsrc={this.state.img} Title={this.state.title} 
-                Notes={this.state.notes} Url={this.state.url} onClose={this.handleClose} />
+                <DisplayDialog open={this.state.dialog} Imgsrc={this.state.img} Title={this.state.title} 
+                Notes={this.state.notes} Url={this.state.url} Id={this.state.id} onClose={this.handleClose} />
             </div>
         )
     }

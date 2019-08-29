@@ -13,9 +13,10 @@ const style = {
     dialog: styles.dialog
 };
 
-function handleConfigure(Url) {
+function handleConfigure(url, id) {
     var data = {}
-    data['url'] = Url
+    data['url'] = url
+    data['id'] = id
     configure(data)
 }
 
@@ -54,7 +55,7 @@ class DisplayDialog extends React.Component {
     }
 
     render() {
-        const { imgsrc, Title, Notes, Url, classes, onClose, ...other} = this.props
+        const { Imgsrc, Id, Title, Notes, Url, classes, onClose, ...other} = this.props
 
         return(
             <div>
@@ -62,16 +63,16 @@ class DisplayDialog extends React.Component {
                     <DialogTitle>
                         {(this.state.edit) ? <TextField defaultValue={Title.toUpperCase()} /> : <Typography variant='inherit'>{Title.toUpperCase()}</Typography>}
                     </DialogTitle>
-                    <img className='Img' src={`data:image/jpg;base64,${imgsrc}`} alt='test ip cam' />
+                    <img className='Img' src={`data:image/jpg;base64,${Imgsrc}`} alt='test ip cam' />
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue={Url} /> : <Typography className={classes.displayDes} variant='inherit'>{Url}</Typography>}
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue={Notes} /> : <Typography className={classes.displayDes} variant='inherit'>{Notes}</Typography>}
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue='Py file here' /> : <Typography className={classes.displayDes} variant='inherit'>'py file'</Typography>}
                     <DialogActions>
                         <Button color='primary' onClick={() => {
-                            handleConfigure(Url)
+                            handleConfigure(Url, Id)
                         }}>Configure</Button>
                         <Button color='primary' onClick={() => {
-                            handleRedirect(imgsrc, Title)
+                            handleRedirect(Imgsrc, Title)
                         }}>Monitor</Button>
                         <Button color='primary' onClick={this.handleEdit}>{this.state.editbtn}</Button>
                         <Button color='secondary' onClick={this.handleClose}>Close</Button>

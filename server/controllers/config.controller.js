@@ -1,17 +1,28 @@
 import { PythonShell } from 'python-shell';
+const shelljs = require('shelljs');
 
-let options = {
-    pythonPath: '/usr/bin/python3',
+const PATH = '/home/yinghuit/Documents/Git/Dahlsensdemo';
+var options = {
+    pythonPath: '/usr/bin/python3', // Run in python3 
     pythonOptions: ['-u'],
-    scriptPath: '/home/yinghuit/Documents/Git/Dahlsensdemo'
-}
+    scriptPath: PATH
+};
+const MAIN = '/main.py'
 
 export function configurl(req, res) {
-    const { url } = req.body
-    options['args'] = url
-    PythonShell.run('main.py', options, function(err, result) {
+    const { url, id } = req.body
+    // Create new py file to execute
+    shelljs.exec('cp ' + PATH + MAIN + ' ' + PATH + '/' + id + '.py') 
+    options['args'] = [url]
+    var filename = id + '.py'
+    
+    // Run the created py file
+    PythonShell.run(filename, options, function(err, result) {
         if (err) { console.log(err) };
 
-        console.log('results: ', result)
+        // Delete py file when program end
+        if (result[0] === 'END OF PROGRAM') {
+            shelljs.exec('rm ' + PATH + '/' + filename)
+        }
     })
 }
