@@ -7,6 +7,9 @@ In the project directory, you can run:
 ### `npm install` or `npm i`
 To install all required dependencies for this project.
 
+### `pip install -r requirements.txt`
+To install all required libraries for python to run detection. 
+
 ### `npm run migrate`
 Create database table. <br>
 Before this, please create a user and database in mysql based on the following info: 
