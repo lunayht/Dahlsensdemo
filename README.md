@@ -7,7 +7,7 @@ In the project directory, you can run:
 ### `npm install` or `npm i`
 To install all required dependencies for this project.
 
-### `pip install -r requirements.txt`
+### `pip3 install -r requirements.txt`
 To install all required libraries for python to run detection. 
 
 ### `npm run migrate`
