@@ -1,4 +1,6 @@
 import { PythonShell } from 'python-shell';
+import HttpStatus from 'http-status-codes';
+import Camera from '../models/camera.model';
 const shelljs = require('shelljs');
 
 const PATH = '/home/yinghuit/Documents/Git/Dahlsensdemo';
@@ -13,7 +15,7 @@ export function configurl(req, res) {
     const { url, id } = req.body
     // Create new py file to execute
     shelljs.exec('cp ' + PATH + MAIN + ' ' + PATH + '/' + id + '.py') 
-    options['args'] = [url]
+    options['args'] = [url, id]
     var filename = id + '.py'
     
     // Run the created py file
@@ -23,6 +25,10 @@ export function configurl(req, res) {
         // Delete py file when program end
         if (result[0] === 'END OF PROGRAM') {
             shelljs.exec('rm ' + PATH + '/' + filename)
+
+            // res.json({
+            //     assign: true
+            // })
         }
     })
 }

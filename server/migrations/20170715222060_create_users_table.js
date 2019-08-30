@@ -5,6 +5,7 @@ exports.up = function(knex) {
                     camera.string('url').notNullable();
                     camera.string('title').notNullable();
                     camera.string('notes');
+                    camera.boolean('assign').notNullable();
                 })
 };
 

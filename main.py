@@ -1,29 +1,38 @@
 import cv2
 import argparse
-# import mysql.connector
+import mysql.connector
 
-# HOST='localhost'
-# USER='lauretta'
-# PASSWORD='dahlsens'
-# DB='dahlsens'
+######################################## CONSTANTS ########################################
+HOST='localhost'
+USER='lauretta'
+PASSWORD='dahlsens'
+DB='dahlsens'
 
-# mydb = mysql.connector.connect(
-#     host=HOST,
-#     user=USER,
-#     passwd=PASSWORD,
-#     database=DB
-# )
+######################################## FUNCTIONS ########################################
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('VIDEO_PATH', type=str)
+    parser.add_argument('id', type=str)
+    return parser.parse_args()
 
-# mycursor = mydb.cursor()
-# sql = "SELECT * FROM cameras WHERE url = '" + args.VIDEO_PATH + "'"
+def update_db(id, db, cursor):
+    sql = "UPDATE cameras SET assign = '1' WHERE id = '" + id + "'"
+    cursor.execute(sql)
+    db.commit()
 
-# mycursor.execute(sql)
-# myresult = mycursor.fetchone()
-
-parser = argparse.ArgumentParser()
-parser.add_argument("VIDEO_PATH", type=str)
-args = parser.parse_args()
+########################################### MAIN ##########################################
+args = parse_args()
 cap = cv2.VideoCapture(args.VIDEO_PATH)
+mydb = mysql.connector.connect(
+    host=HOST,
+    user=USER,
+    passwd=PASSWORD,
+    database=DB
+)
+mycursor = mydb.cursor()
+
+if cap.isOpened():
+    update_db(args.id, mydb, mycursor)
 
 while cap.isOpened():
     ret, img = cap.read()
@@ -35,4 +44,4 @@ while cap.isOpened():
 print('END OF PROGRAM')
 cap.release()
 cv2.destroyAllWindows()
-# mydb.close()
+mydb.close()

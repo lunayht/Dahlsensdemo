@@ -22,7 +22,7 @@ class SetupPage extends React.Component {
         this.handleAdd = this.handleAdd.bind(this);
     };
 
-    componentDidMount() {
+    componentWillMount() {
         // query data from mysql
         getinfo()
         .then((data) => {
@@ -45,7 +45,7 @@ class SetupPage extends React.Component {
                     <div className='row'>
                         {this.state.cards.map(el =>
                             <div key={el.id} className="col-3 col-s-12">
-                                <CamCard img={`data:image/jpg;base64,${el.b64img}`} Title={el.title} Description={el.notes}/>
+                                <CamCard Img={`data:image/jpg;base64,${el.b64img}`} Title={el.title} Description={el.notes} Config={el.assign}/>
                             </div>
                             )}
                     </div>

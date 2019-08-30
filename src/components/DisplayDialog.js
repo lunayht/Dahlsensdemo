@@ -13,11 +13,12 @@ const style = {
     dialog: styles.dialog
 };
 
-function handleConfigure(url, id) {
-    var data = {}
-    data['url'] = url
-    data['id'] = id
-    configure(data)
+function handleConfigure(props) {
+
+    configure(props).then((data) => {
+        // action to be done when finished execute 
+        console.log(data)
+    })
 }
 
 function handleRedirect(imgsrc, title) {
@@ -69,7 +70,8 @@ class DisplayDialog extends React.Component {
                     {(this.state.edit) ? <TextField className={classes.displayDes} defaultValue='Py file here' /> : <Typography className={classes.displayDes} variant='inherit'>'py file'</Typography>}
                     <DialogActions>
                         <Button color='primary' onClick={() => {
-                            handleConfigure(Url, Id)
+
+                            handleConfigure({'url': Url, 'id': Id})
                         }}>Configure</Button>
                         <Button color='primary' onClick={() => {
                             handleRedirect(Imgsrc, Title)

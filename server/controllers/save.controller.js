@@ -38,7 +38,8 @@ export function checkurl(req, res) {
 
 export function saveinfo(req, res) {
     const { b64img, title, notes, url } = req.body;
-    Camera.forge({b64img, title, notes, url}).save()
+    const assign = false;
+    Camera.forge({b64img, title, notes, url, assign}).save()
     .then(camera => res.json({
         save: true,
         data: camera.toJSON()

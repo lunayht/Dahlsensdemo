@@ -17,6 +17,7 @@ class CamCard extends React.Component {
         super(props);
         this.state = {
             dialog: false,
+            config: false,
             img: '',
             title: '',
             url: '',
@@ -28,16 +29,18 @@ class CamCard extends React.Component {
     handleClose() {
         this.setState({
             dialog: false,
+            config: false,
             img: '',
             title: '',
             url: '',
             notes: '',
-            id: ''
+            id: '',
         })
+        window.location.reload() // Reload page to update assign status 
     };
 
     render() {
-        const { children, custom, classes, className, img, Title, Description } = this.props;
+        const { children, custom, classes, className, Img, Title, Description, Config } = this.props;
 
         return(
             <div> 
@@ -45,21 +48,21 @@ class CamCard extends React.Component {
                 {...custom}>
                     <CardActionArea 
                     onClick={() => {
-                        var imgstring = img.split(',');
+                        var imgstring = Img.split(',');
                         checkcard({b64img: imgstring[1]}).then((resData) => {
-                            // console.log(resData.data.data.notes)
                             this.setState({ 
                                 dialog: true,
                                 img: resData.data.data.b64img,
                                 title: resData.data.data.title,
                                 url: resData.data.data.url,
                                 notes: resData.data.data.notes,
-                                id: resData.data.data.id
+                                id: resData.data.data.id,
+                                config: resData.data.data.assign
                             })
                         });
                         }}
                     >
-                        <CardMedia className={classes.cardimg} image={img} />
+                        <CardMedia className={classes.cardimg} image={Img} />
                         <CardContent>
                             <div className='Div2'>
                                 <div className='Div-CamCard'>
@@ -70,12 +73,10 @@ class CamCard extends React.Component {
                                     {Description}
                                 </Typography>
                                 </div>
-                                <DoneIcon className={classes.doneicon} />
+                                {(this.state.config || Config) ? <DoneIcon className={classes.doneicon} /> : <div></div>}
                             </div>
-                            
                         </CardContent>
                     </CardActionArea>
-                    
                     {children}
                 </Card>
                 <DisplayDialog open={this.state.dialog} Imgsrc={this.state.img} Title={this.state.title} 
