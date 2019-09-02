@@ -3,7 +3,7 @@ import HttpStatus from 'http-status-codes';
 import Camera from '../models/camera.model';
 const shelljs = require('shelljs');
 
-const PATH = '/home/yinghuit/Documents/Git/Dahlsensdemo';
+const PATH = '/home/lauretta/Documents/Dahlsensdemo';
 var options = {
     pythonPath: '/usr/bin/python3', // Run in python3 
     pythonOptions: ['-u'],
@@ -23,12 +23,13 @@ export function configurl(req, res) {
         if (err) { console.log(err) };
 
         // Delete py file when program end
-        if (result[0] === 'END OF PROGRAM') {
+        if (result.length > 0) {
             shelljs.exec('rm ' + PATH + '/' + filename)
 
             // res.json({
             //     assign: true
             // })
         }
+        console.log(result)
     })
 }
