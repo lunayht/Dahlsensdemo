@@ -5,6 +5,7 @@ package-lock.json
 /node_modules
 /.pnp
 .pnp.js
+*.m4v
 
 # testing
 /coverage
