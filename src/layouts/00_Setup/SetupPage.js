@@ -22,7 +22,7 @@ class SetupPage extends React.Component {
         this.handleAdd = this.handleAdd.bind(this);
     };
 
-    componentWillMount() {
+    componentDidMount() {
         // query data from mysql
         getinfo()
         .then((data) => {

@@ -1,20 +1,20 @@
 import { PythonShell } from 'python-shell';
-import HttpStatus from 'http-status-codes';
-import Camera from '../models/camera.model';
+// import HttpStatus from 'http-status-codes';
+// import Camera from '../models/camera.model';
 const shelljs = require('shelljs');
 
-const PATH = '/home/yinghuit/Documents/Git/Dahlsensdemo';
+const PATH = 'D:\\Git\\Dahlsensdemo\\';
 var options = {
-    pythonPath: '/usr/bin/python3', // Run in python3 
+    pythonPath: 'C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python36\\python.exe', // Run in python3 
     pythonOptions: ['-u'],
     scriptPath: PATH
 };
-const MAIN = '/main.py'
+const MAIN = 'main.py'
 
 export function configurl(req, res) {
-    const { url, id } = req.body
+    const { url, id } = req.body  
     // Create new py file to execute
-    shelljs.exec('cp ' + PATH + MAIN + ' ' + PATH + '/' + id + '.py') 
+    shelljs.exec('copy ' + PATH + MAIN + ' ' + PATH + id + '.py') 
     options['args'] = [url, id]
     var filename = id + '.py'
     
@@ -24,7 +24,7 @@ export function configurl(req, res) {
 
         // Delete py file when program end
         if (result[0] === 'END OF PROGRAM') {
-            shelljs.exec('rm ' + PATH + '/' + filename)
+            shelljs.exec('del ' + PATH + filename)
 
             // res.json({
             //     assign: true

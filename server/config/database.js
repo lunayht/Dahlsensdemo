@@ -3,7 +3,7 @@ export default {
     connection: {
         host: 'localhost',
         user: 'lauretta',
-        password: 'dahlsens',
+        password: 'password',
         database: 'dahlsens',
         charset: 'utf8'
     },

@@ -5,7 +5,7 @@ import mysql.connector
 ######################################## CONSTANTS ########################################
 HOST='localhost'
 USER='lauretta'
-PASSWORD='dahlsens'
+PASSWORD='password'
 DB='dahlsens'
 
 ######################################## FUNCTIONS ########################################
