@@ -42,3 +42,5 @@ Before running the app, please disable [Same-Origin Policy in Chrome to fix no '
 More info about [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).<br>
 
 [Setup headless server in ubuntu](https://unix.stackexchange.com/questions/326234/setting-up-vnc-server-and-no-physical-display-ubuntu-16-04-lts/326238#326238?newreg=6ad22f4e46344827b93466c79c4db7ff) <br>
+
+[Update xserver-xorg-input settings](https://unix.stackexchange.com/questions/174091/mouse-and-keyboard-not-working-in-ubuntu-14-04/174095)<br>
