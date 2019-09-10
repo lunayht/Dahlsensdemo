@@ -39,6 +39,6 @@ You will also see any lint errors in the console.
 
 ## Remarks
 Before running the app, please disable [Same-Origin Policy in Chrome to fix no 'Access-Control-Allow-Origin' header issue](https://www.codevoila.com/post/75/how-to-disable-same-origin-policy-in-chrome). For Firefox user, please install this [extension](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) to bypass CORS policy. <br>
-More info about [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
+More info about [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).<br>
 
-
+[Setup headless server in ubuntu](https://unix.stackexchange.com/questions/326234/setting-up-vnc-server-and-no-physical-display-ubuntu-16-04-lts/326238#326238?newreg=6ad22f4e46344827b93466c79c4db7ff) <br>
