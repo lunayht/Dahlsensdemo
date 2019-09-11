@@ -13,7 +13,7 @@ export function configUrl(req, res) {
     const { url, id } = req.body
     // Create new py file to execute
     shelljs.exec('cp ' + PATH + MAIN + ' ' + PATH + '/' + id + '.py') 
-    options['args'] = [url, id]
+    options['args'] = [url]
     var filename = id + '.py'
     
     // Run the created py file

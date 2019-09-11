@@ -12,11 +12,10 @@ DB='dahlsens'
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('VIDEO_PATH', type=str)
-    parser.add_argument('id', type=str)
     return parser.parse_args()
 
-def update_db(id, db, cursor):
-    sql = "UPDATE cameras SET assign = '1' WHERE id = '" + id + "'"
+def update_db(url, config, db, cursor):
+    sql = "UPDATE cameras SET assign = '" + config + "' WHERE url = '" + url + "'"
     cursor.execute(sql)
     db.commit()
 
@@ -32,13 +31,14 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 if cap.isOpened():
-    update_db(args.id, mydb, mycursor)
+    update_db(args.VIDEO_PATH, '1', mydb, mycursor)
 
 while cap.isOpened():
     ret, img = cap.read()
     cv2.imshow('Webcam', img)
 
     if cv2.waitKey(1) == 27:
+        update_db(args.VIDEO_PATH, '0', mydb, mycursor)
         break
 
 print('END OF PROGRAM')
