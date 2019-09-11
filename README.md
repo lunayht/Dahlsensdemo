@@ -18,7 +18,8 @@ Before this, please create a user and database in mysql based on the following i
 - `password: 'dahlsens'`
 - `database: 'dahlsens'` 
 
-Edit `server/config/database.js` for different usecase. <br>
+Edit `server/config/database.js` for different cases. <br>
+
 Useful links: [Install MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/), [Create User and Database](https://www.a2hosting.sg/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line) , [Reset password using ALTER command  for MySQL<=5.7.6](https://stackoverflow.com/questions/33467337/reset-mysql-root-password-using-alter-user-statement-after-install-on-mac) <br>
 
 After migrations,please log in to your mysql user and change the data type of b64img under table cameras to LONGTEXT: 
@@ -40,7 +41,3 @@ You will also see any lint errors in the console.
 ## Remarks
 Before running the app, please disable [Same-Origin Policy in Chrome to fix no 'Access-Control-Allow-Origin' header issue](https://www.codevoila.com/post/75/how-to-disable-same-origin-policy-in-chrome). For Firefox user, please install this [extension](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) to bypass CORS policy. <br>
 More info about [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).<br>
-
-[Setup headless server in ubuntu](https://unix.stackexchange.com/questions/326234/setting-up-vnc-server-and-no-physical-display-ubuntu-16-04-lts/326238#326238?newreg=6ad22f4e46344827b93466c79c4db7ff) <br>
-
-[Update xserver-xorg-input settings](https://unix.stackexchange.com/questions/174091/mouse-and-keyboard-not-working-in-ubuntu-14-04/174095)<br>

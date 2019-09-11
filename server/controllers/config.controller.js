@@ -1,6 +1,4 @@
 import { PythonShell } from 'python-shell';
-import HttpStatus from 'http-status-codes';
-import Camera from '../models/camera.model';
 const shelljs = require('shelljs');
 
 const PATH = '/home/yinghuit/Documents/Git/Dahlsensdemo';
@@ -11,7 +9,7 @@ var options = {
 };
 const MAIN = '/main.py'
 
-export function configurl(req, res) {
+export function configUrl(req, res) {
     const { url, id } = req.body
     // Create new py file to execute
     shelljs.exec('cp ' + PATH + MAIN + ' ' + PATH + '/' + id + '.py') 

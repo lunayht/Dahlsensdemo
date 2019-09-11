@@ -12,7 +12,7 @@ var key = 'response';
 
 let block = new Netmask(ipAdd + '/24');
 
-export function scanresult(req, res) {
+export function scanResult(req, res) {
     console.log('Scanning now..........');
     var temports = []
     var data = {};

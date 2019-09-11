@@ -5,7 +5,7 @@ const scanRoutes = express.Router();
 
 scanRoutes.route('/scan')
     .post((req, res) => {
-        scanCtrl.scanresult(req, res)
+        scanCtrl.scanResult(req, res)
     })
 
 export default scanRoutes;

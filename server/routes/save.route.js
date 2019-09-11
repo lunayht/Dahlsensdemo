@@ -5,22 +5,22 @@ const saveRoutes = express.Router();
 
 saveRoutes.route('/imgurl')
     .post((req, res) => {
-        saveCtrl.checkurl(req, res)
+        saveCtrl.checkUrl(req, res)
     })
 
 saveRoutes.route('/mysql')
     .post((req, res) => {
-        saveCtrl.saveinfo(req, res)
+        saveCtrl.saveInfo(req, res)
     })
 
 saveRoutes.route('/getall')
     .post((req, res) => {
-        saveCtrl.queryinfo(req, res)
+        saveCtrl.queryInfo(req, res)
     })
 
 saveRoutes.route('/getone')
     .post((req, res) => {
-        saveCtrl.queryone(req, res)
+        saveCtrl.queryOne(req, res)
     })
 
 export default saveRoutes;

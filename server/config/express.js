@@ -20,7 +20,7 @@ app.use(cors());
 app.use(helmet());
 app.use(compression());
 app.use(methodOverride());
-app.use(express.json({limit: '50mb'}));
+app.use(express.json({limit: '50mb'})); // To ensure b64 image bytes can be send over server
 app.use(express.urlencoded({limit: '50mb', extended: false }));
 app.use(morgan('dev'));
 app.use(express.static(constant.assetsDir));

@@ -11,7 +11,7 @@ function isUrlValid(userInput) {
         return true;
 }
 
-export function checkurl(req, res) {
+export function checkUrl(req, res) {
     const { url } = req.body
     if (isUrlValid(url)) {
         http.get(url, function() {
@@ -36,7 +36,7 @@ export function checkurl(req, res) {
     }
 }
 
-export function saveinfo(req, res) {
+export function saveInfo(req, res) {
     const { b64img, title, notes, url } = req.body;
     const assign = false;
     Camera.forge({b64img, title, notes, url, assign}).save()
@@ -49,7 +49,7 @@ export function saveinfo(req, res) {
     }))
 }
 
-export function queryinfo(req, res) {
+export function queryInfo(req, res) {
     Camera.fetchAll()
     .then((resData) => {
         // console.log(resData.serialize())
@@ -61,7 +61,7 @@ export function queryinfo(req, res) {
     })
 }
 
-export function queryone(req, res) {
+export function queryOne(req, res) {
     const { b64img } = req.body;
     Camera.query({
         where: { b64img: b64img },

@@ -5,7 +5,7 @@ const configRoutes = express.Router()
 
 configRoutes.route('/config')
     .post((req, res) => {
-        configCtrl.configurl(req, res)
+        configCtrl.configUrl(req, res)
     })
 
 export default configRoutes;
