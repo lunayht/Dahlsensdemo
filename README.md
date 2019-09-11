@@ -25,7 +25,7 @@ Useful links: [Install MySQL](https://dev.mysql.com/doc/mysql-installation-excer
 After migrations,please log in to your mysql user and change the data type of b64img under table cameras to LONGTEXT: 
 - mysql -u lauretta -p
 - use dahlsens;
-- ALTER TABLE `cameras` MODIFY `b64img` LONGTEXT`;
+- <pre><code>ALTER TABLE `cameras` MODIFY `b64img` LONGTEXT;</pre><code>
 - quit
 
 ### `npm run dev`
